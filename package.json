@@ -10,13 +10,17 @@
   },
   "dependencies": {
     "@expo/next-adapter": "^2.1.59",
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "autoprefixer": "^9.8.6",
     "expo": "~40.0.0",
     "expo-status-bar": "~1.0.3",
     "next": "^9",
+    "postcss": "^7.0.35",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0"
