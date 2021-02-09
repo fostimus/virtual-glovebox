@@ -4,7 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 import App from "../App";
 
 export default function Home() {
-  return <App />;
+  return (
+    <>
+      <App />
+      <div>test</div>
+    </>
+  );
 }
 
 /*
