@@ -10,12 +10,9 @@
   },
   "dependencies": {
     "@expo/next-adapter": "^2.1.59",
-<<<<<<< HEAD
     "@nandorojo/swr-firestore": "^0.16.0",
-=======
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
->>>>>>> 6e0704741eeae0c06ea7bc3167c1b2fe4397527c
     "expo": "~40.0.0",
     "expo-status-bar": "~1.0.3",
     "firebase": "^8.2.6",
