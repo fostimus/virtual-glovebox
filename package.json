@@ -10,10 +10,12 @@
   },
   "dependencies": {
     "@expo/next-adapter": "^2.1.59",
+    "@nandorojo/swr-firestore": "^0.16.0",
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "expo": "~40.0.0",
     "expo-status-bar": "~1.0.3",
+    "firebase": "^8.2.6",
     "next": "^9",
     "postcss": "^7.0.35",
     "prop-types": "^15.7.2",
