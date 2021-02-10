@@ -2,20 +2,16 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import App from "../App";
-import { useCollection } from '@nandorojo/swr-firestore'
+
 
 
 
 
 export default function Home() {
-
-  const data = useCollection('users')
-  console.log(users.data)
   return (
-    <div>
-      {data.data}
+    <>
       <div>TEST FROM THE INDEX.JS</div>
-    </div>
+    </>
   );
 }
 
