@@ -2,6 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { View, Text, TextInput } from "react-native-tailwind";
+import SignInOption from "./components/SignInOption";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
         className="border border-dashed lg:border-solid  w-48 focus:ring-2 focus:ring-purple-600 focus:border-transparent"
         placeholder="Type here"
       />
+      <SignInOption text="Sign In with Email" />
     </View>
   );
 }
