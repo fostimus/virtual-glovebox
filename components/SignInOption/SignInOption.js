@@ -18,11 +18,11 @@ export default function SignInOption({ option }) {
   return (
     <AppView
       style={tailwind(
-        "flex flex-row container justify-evenly items-center w-60 bg-gray-400 p-3 rounded my-4"
+        "flex flex-row container justify-evenly items-center w-60 bg-gray-400 p-3 rounded-md my-4"
       )}
     >
       <Image source={imgObj[option.toLowerCase()]} />
-      <AppText>Sign In with {option}</AppText>
+      <AppText bold>Sign In with {option}</AppText>
     </AppView>
   );
 }
