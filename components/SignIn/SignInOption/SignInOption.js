@@ -1,8 +1,7 @@
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { View, TextInput, Image } from "react-native";
-import AppText from "../base/AppText";
-import AppView from "../base/AppView";
+import { AppText, AppView } from "../../base";
 import tailwind from "tailwind-rn";
 import email from "./email.png";
 import google from "./google.png";
