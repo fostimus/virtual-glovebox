@@ -1,6 +1,5 @@
 const baseValues = {
-  fontSize: 16,
-  fontFamily: "Roboto"
+  fontSize: 16
 };
 
 export default baseValues;

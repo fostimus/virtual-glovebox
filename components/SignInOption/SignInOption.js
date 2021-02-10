@@ -6,11 +6,12 @@ import AppView from "../base/AppView";
 import tailwind from "tailwind-rn";
 import email from "./email.png";
 import google from "./google.png";
+import apple from "./apple.png";
 
 const imgObj = {
   email: email,
-  google: google
-  // apple: apple
+  google: google,
+  apple: apple
 };
 
 export default function SignInOption({ option }) {

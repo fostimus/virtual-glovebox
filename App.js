@@ -21,7 +21,7 @@ export default function App() {
         )}
         placeholder="Type here"
       />
-      <SignInOptionContainer options={["Email", "Google"]} />
+      <SignInOptionContainer options={["Email", "Google", "Apple"]} />
     </View>
   );
 }
