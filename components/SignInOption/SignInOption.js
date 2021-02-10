@@ -1,19 +1,27 @@
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
-import { View, Text, TextInput, Image } from "react-native";
+import { View, TextInput, Image } from "react-native";
+import AppText from "../base/AppText";
+import AppView from "../base/AppView";
 import tailwind from "tailwind-rn";
 import email from "./email.png";
+import google from "./google.png";
 
-export default function SignInOption({ text }) {
+const imgObj = {
+  email: email,
+  google: google
+  // apple: apple
+};
+
+export default function SignInOption({ option }) {
   return (
-    <View
+    <AppView
       style={tailwind(
-        "flex flex-row container justify-evenly items-center w-60 border border-solid border-black bg-blue-300 p-2 rounded"
+        "flex flex-row container justify-evenly items-center w-60 bg-gray-400 p-3 rounded my-4"
       )}
     >
-      <Image source={email} />
-      {/* <Text>{text}</Text> */}
-      <Text>{text}</Text>
-    </View>
+      <Image source={imgObj[option.toLowerCase()]} />
+      <AppText>Sign In with {option}</AppText>
+    </AppView>
   );
 }

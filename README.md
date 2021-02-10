@@ -3,17 +3,17 @@
 ## Set Up
 
 Clone this repository. Once inside `virtual-glovebox`:
-1\. Run `yarn`
-2\. To run the web app, run `yarn next dev`
-3\. To run iOS app on your iPhone, do the following:
-    1\. Download "Expo Go" from App Store
-    2\. Run `yarn start`
-    3\. In the browser tab that opens, scan the QR code from your iPhone
+1. Run `yarn`
+2. To run the web app, run `yarn next dev`
+3. To run iOS app on your iPhone, do the following:
+    1. Download "Expo Go" from App Store
+    2. Run `yarn start`
+    3. In the browser tab that opens, scan the QR code from your iPhone
 
 ## Front End
 
 -   TailwindCSS
-    -   [React Native Package](https://www.npmjs.com/package/react-native-tailwind)
+    -   [React Native Package](https://github.com/vadimdemedes/tailwind-rn)
 
 ## Deployment
 
@@ -27,3 +27,4 @@ For deploying the iOS app to the App Store, check out these docs to make it happ
 # To Do
 
 -   Use SVGs instead of PNGs for icons. Solution is going to be pretty involved
+-   Customize TailwindCSS to use designer choices

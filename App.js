@@ -3,7 +3,7 @@ import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { View, Text, TextInput, Image } from "react-native";
 import tailwind from "tailwind-rn";
-import SignInOption from "./components/SignInOption";
+import SignInOptionContainer from "./components/SignInOptionContainer";
 
 export default function App() {
   return (
@@ -21,7 +21,7 @@ export default function App() {
         )}
         placeholder="Type here"
       />
-      <SignInOption text="Sign In with Email" />
+      <SignInOptionContainer options={["Email", "Google"]} />
     </View>
   );
 }
