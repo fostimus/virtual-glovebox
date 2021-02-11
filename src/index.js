@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { TextInput, Image, Button } from "react-native";
-import { AppText, AppView, AppButton } from "./components/base";
+import { AppText, AppView, AppButton } from "base";
 import tailwind from "tailwind-rn";
 import SignIn from "./components/SignIn";
 
