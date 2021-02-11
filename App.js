@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { TextInput, Image, Button } from "react-native";
-import { AppText, AppView } from "./components/base";
+import { AppText, AppView, AppButton } from "./components/base";
 import tailwind from "tailwind-rn";
 import SignIn from "./components/SignIn";
 
@@ -39,6 +39,7 @@ function Home() {
   return (
     <AppView style={tailwind("flex-1 items-center justify-center bg-gray-300")}>
       <SignIn />
+      <AppButton />
     </AppView>
   );
 }

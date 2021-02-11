@@ -2,15 +2,15 @@ import React from "react";
 import { TextInput, Image } from "react-native";
 import { AppText, AppView } from "../../base";
 import tailwind from "tailwind-rn";
+import { styles } from "./index";
 
 export default function SignInField({ placeholder }) {
   return (
-    <AppView
-      style={tailwind(
-        "flex flex-row container justify-evenly items-center w-60 border border-solid border-black p-3 rounded-md my-4"
-      )}
-    >
-      <TextInput placeholder={placeholder} />
-    </AppView>
+    <TextInput
+      autoCorrect={false}
+      textContentType="emailAddress"
+      placeholder={placeholder}
+      style={tailwind(styles + " border border-solid border-black")}
+    />
   );
 }

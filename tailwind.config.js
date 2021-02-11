@@ -18,7 +18,11 @@ module.exports = {
       "2xl": "1536px"
       // => @media (min-width: 1536px) { ... }
     },
-    extend: {}
+    extend: {
+      colors: {
+        "vgb-green": "#D7F380"
+      }
+    }
   },
   variants: {
     extend: {}
