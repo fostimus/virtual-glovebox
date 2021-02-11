@@ -3,11 +3,14 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import App from "../App";
 
+
+
+
+
 export default function Home() {
   return (
     <>
-      <App />
-      <div>test</div>
+      <div>TEST FROM THE INDEX.JS</div>
     </>
   );
 }
