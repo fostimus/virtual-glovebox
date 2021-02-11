@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Image } from "react-native";
 import AppText from "../AppText";
-import { tailwind } from "_tailwind";
+import { tailwind } from "tailwind";
 
 export default function AppButton({ text, image, style }) {
   return (
