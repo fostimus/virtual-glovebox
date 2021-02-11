@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image } from "react-native";
-import { AppText, AppView } from "../base";
+import { AppText, AppView } from "base";
 import SignInOptionContainer from "./SignInOptionContainer";
 import placeholder from "./placeholder.png";
 

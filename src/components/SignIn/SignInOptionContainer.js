@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { TextInput, Image } from "react-native";
-import { AppView } from "../base";
+import { AppView } from "base";
 import tailwind from "tailwind-rn";
 import { SignInButton, SignInField } from "./options";
 
