@@ -15,6 +15,7 @@ const imgObj = {
 export default function SignInButton({ option, setEmailSignIn }) {
   return (
     <AppButton
+      large
       text={"Sign In with " + option}
       image={imgObj[option.toLowerCase()]}
       style="bg-gray-400"
