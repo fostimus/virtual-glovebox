@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
 import AppText from "./AppText";
-import tailwind from "tailwind-rn";
+import { tailwind } from "../../tailwind";
 
 export default function AppButton({ text }) {
   return (
