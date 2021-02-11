@@ -1,5 +1,6 @@
 {
   "expo": {
+    "entryPoint": "./src/App.js",
     "name": "virtual-glovebox",
     "slug": "virtual-glovebox",
     "version": "1.0.0",
