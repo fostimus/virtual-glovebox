@@ -13,7 +13,7 @@ Clone this repository. Once inside `virtual-glovebox`:
 ## Front End
 
 -   TailwindCSS
-    -   [React Native Package](https://www.npmjs.com/package/react-native-tailwind)
+    -   [React Native Package](https://github.com/vadimdemedes/tailwind-rn)
 
 ## Deployment
 
@@ -23,3 +23,8 @@ For deploying the iOS app to the App Store, check out these docs to make it happ
 
 -   <https://docs.expo.io/workflow/publishing/>
 -   <https://docs.expo.io/distribution/introduction/>
+
+# To Do
+
+-   Use SVGs instead of PNGs for icons. Solution is going to be pretty involved
+-   Customize TailwindCSS to use designer choices

@@ -1,7 +1,16 @@
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
-import { View, Text, TextInput } from "react-native-tailwind";
+import { TextInput, Image, Button } from "react-native";
+import { AppText, AppView } from "./components/base";
+import tailwind from "tailwind-rn";
+import SignIn from "./components/SignIn";
+
+const Stack = createStackNavigator();
+//TODO: intro react context to pass down navigation info to buttons on edge
 
 const firebaseConfig = {
   apiKey: "AIzaSyBdn3aJkiL5zFqetN9_nG1Aw_y9m1oi-98",
@@ -15,14 +24,22 @@ const firebaseConfig = {
 // const fuego = new Fuego(firebaseConfig)
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-gray-300">
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={() => <Home />}
+          options={{ title: "Welcome" }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
-      <TextInput
-        className="border border-solid focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-        placeholder="Type here"
-      />
-    </View>
+function Home() {
+  return (
+    <AppView style={tailwind("flex-1 items-center justify-center bg-gray-300")}>
+      <SignIn options={["Email", "Google", "Apple"]} />
+    </AppView>
   );
 }
