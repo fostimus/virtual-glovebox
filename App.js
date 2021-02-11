@@ -40,7 +40,7 @@ function Home() {
   return (
     <AppView style={tailwind("flex-1 items-center justify-center bg-gray-300")}>
       <SignIn />
-      <AppButton text="butttttton" image={apple} />
+      <AppButton text="bn" image={apple} />
     </AppView>
   );
 }
