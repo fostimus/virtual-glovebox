@@ -8,6 +8,7 @@ import { TextInput, Image, Button } from "react-native";
 import { AppText, AppView, AppButton } from "./components/base";
 import tailwind from "tailwind-rn";
 import SignIn from "./components/SignIn";
+import apple from "./components/SignIn/options/apple.png";
 
 const Stack = createStackNavigator();
 //TODO: intro react context to pass down navigation info to buttons on edge
@@ -39,7 +40,7 @@ function Home() {
   return (
     <AppView style={tailwind("flex-1 items-center justify-center bg-gray-300")}>
       <SignIn />
-      <AppButton />
+      <AppButton text="butttttton" image={apple} />
     </AppView>
   );
 }
