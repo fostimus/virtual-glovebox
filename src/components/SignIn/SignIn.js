@@ -16,7 +16,7 @@ export default function SignIn() {
   const footer = emailSignIn ? (
     <AppButton
       large
-      style={tailwind("bg-gray-600 text-white")}
+      style={tailwind("bg-gray-700 text-white")}
       text="Continue"
     />
   ) : (
