@@ -10,8 +10,6 @@ export default function NewSignUpDashboard(props) {
 
   const options = ["Add Vehicle", "Add Driver's License", "Take a Tour"];
 
-  console.log(props);
-
   return (
     <Screen loggedIn style={tailwind("flex-1 items-center")}>
       <AppText bold style={tailwind("text-3xl my-4")}>
