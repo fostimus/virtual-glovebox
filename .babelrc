@@ -7,9 +7,9 @@
         "extensions": [".js", ".ios.js", ".android.js"],
         "alias": {
           "assets": "./src/assets",
+          "screens": "./src/screens",
           "components": "./src/components",
           "base": "./src/components/base",
-          "screens": "./src/screens",
           "tailwind": "./src/tailwind"
         }
       }
