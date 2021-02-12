@@ -11,14 +11,15 @@ export default function AppButton({
   small,
   large
 }) {
-  console.log({
+  const styles = {
     ...tailwind(
       "flex flex-row container justify-evenly items-center " +
         width +
         " p-3 rounded-md my-4 rounded-lg bg-vgb-green "
     ),
     ...style
-  });
+  };
+
   if (small && large) {
     // can't do this
   }
@@ -27,19 +28,11 @@ export default function AppButton({
   if (small) width = "w-28";
   if (large) width = "w-60";
   return (
-    <TouchableOpacity
-      style={{
-        ...tailwind(
-          "flex flex-row container justify-evenly items-center " +
-            width +
-            " p-3 rounded-md my-4 rounded-lg bg-vgb-green "
-        ),
-        ...style
-      }}
-      onPress={action}
-    >
+    <TouchableOpacity style={styles} onPress={action}>
       {image && <Image source={image} />}
-      <AppText>{text}</AppText>
+      <AppText style={styles["color"] && { color: styles["color"] }}>
+        {text}
+      </AppText>
     </TouchableOpacity>
   );
 }
