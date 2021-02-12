@@ -7,10 +7,14 @@ import placeholder from "./placeholder.png";
 export default function SignIn() {
   const [emailSignIn, setEmailSignIn] = useState(false);
 
+  const instructions = emailSignIn
+    ? "Sign up with Email"
+    : "Log in or sign up for free";
+
   return (
     <AppView>
       <Image source={placeholder} />
-      <AppText>Log in or sign up for free</AppText>
+      <AppText>{instructions}</AppText>
       <SignInOptionContainer
         options={["Email", "Google", "Apple"]}
         emailSignIn={emailSignIn}

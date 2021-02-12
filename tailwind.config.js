@@ -20,7 +20,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        "vgb-green": "#93D26E"
+        "vgb-green": "#93D26E",
+        "vgb-purple": "#6367BF"
       }
     }
   },
