@@ -7,7 +7,7 @@ import React from "react";
 // import { StyleSheet, Text, View } from "react-native";
 import { TextInput, Image, Button } from "react-native";
 import { AppText, AppView, AppButton } from "base";
-import tailwind from "tailwind-rn";
+import tailwind from "tailwind";
 import SignIn from "./components/SignIn";
 
 const Stack = createStackNavigator();

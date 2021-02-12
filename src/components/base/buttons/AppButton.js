@@ -1,7 +1,7 @@
 import React from "react";
 import { TouchableOpacity, Image } from "react-native";
 import AppText from "../AppText";
-import { tailwind } from "tailwind";
+import tailwind from "tailwind";
 
 export default function AppButton({
   text,
@@ -11,6 +11,14 @@ export default function AppButton({
   small,
   large
 }) {
+  console.log({
+    ...tailwind(
+      "flex flex-row container justify-evenly items-center " +
+        width +
+        " p-3 rounded-md my-4 rounded-lg bg-vgb-green "
+    ),
+    ...style
+  });
   if (small && large) {
     // can't do this
   }
@@ -20,12 +28,14 @@ export default function AppButton({
   if (large) width = "w-60";
   return (
     <TouchableOpacity
-      style={tailwind(
-        "flex flex-row container justify-evenly items-center " +
-          width +
-          " p-3 rounded-md my-4 rounded-lg bg-vgb-green " +
-          style
-      )}
+      style={{
+        ...tailwind(
+          "flex flex-row container justify-evenly items-center " +
+            width +
+            " p-3 rounded-md my-4 rounded-lg bg-vgb-green "
+        ),
+        ...style
+      }}
       onPress={action}
     >
       {image && <Image source={image} />}

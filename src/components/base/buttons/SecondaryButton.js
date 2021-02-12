@@ -13,7 +13,7 @@ export default function SecondaryButton({
 }) {
   return (
     <AppButton
-      style={"bg-vgb-purple"}
+      style={tailwind("bg-vgb-purple")}
       text={text}
       image={image}
       action={action}
