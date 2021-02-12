@@ -18,7 +18,7 @@ export default function AppButton({
     ...tailwind(
       "flex flex-row container justify-evenly items-center " +
         width +
-        " p-3 rounded-md my-4 rounded-lg bg-vgb-green "
+        " p-3 rounded-md my-4 rounded-lg bg-vgb-primary "
     ),
     ...style
   };

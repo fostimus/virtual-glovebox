@@ -1,4 +1,4 @@
 import Home from "./Home";
+import NewSignUpDashboard from "./NewSignUpDashboard";
 
-console.log(Home);
-export { Home };
+export { Home, NewSignUpDashboard };
