@@ -11,6 +11,9 @@ export default function AppButton({
   small,
   large
 }) {
+  let width = "w-44";
+  if (small) width = "w-28";
+  if (large) width = "w-60";
   const styles = {
     ...tailwind(
       "flex flex-row container justify-evenly items-center " +
@@ -23,10 +26,6 @@ export default function AppButton({
   if (small && large) {
     // can't do this
   }
-
-  let width = "w-44";
-  if (small) width = "w-28";
-  if (large) width = "w-60";
   return (
     <TouchableOpacity style={styles} onPress={action}>
       {image && <Image source={image} />}

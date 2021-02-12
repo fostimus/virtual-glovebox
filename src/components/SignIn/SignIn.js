@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Image } from "react-native";
 import { AppText, AppView, AppButton } from "base";
 import SignInOptionContainer from "./SignInOptionContainer";
-import SignInButton from "./options/SignInButton";
 import tailwind from "tailwind";
 import placeholder from "./placeholder.png";
 
