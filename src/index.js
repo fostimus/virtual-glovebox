@@ -15,9 +15,10 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen
           name="Home"
-          component={NewSignUpDashboard}
+          component={Home}
           options={{ title: "Welcome" }}
         />
+        <Stack.Screen name="Dashboard" component={NewSignUpDashboard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

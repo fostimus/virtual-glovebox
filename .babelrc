@@ -9,6 +9,7 @@
           "assets": "./src/assets",
           "screens": "./src/screens",
           "components": "./src/components",
+          "navigation": "./src/components/navigation",
           "base": "./src/components/base",
           "tailwind": "./src/tailwind"
         }

@@ -29,7 +29,11 @@ module.exports = {
         "vgb-bg": "#F1F1F1",
         //light grey
 
-        "vgb-tertiary": "#DEE4ED"
+        "vgb-tertiary": "#DEE4ED",
+        //white/grey
+
+        "vgb-white": "#FDFCF9"
+        //off white, for nav
       }
     }
   },
