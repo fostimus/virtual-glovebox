@@ -20,8 +20,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        "vgb-green": "#93D26E",
-        "vgb-purple": "#6367BF"
+        "vgb-primary": "#93D26E",
+        // green
+
+        "vgb-secondary": "#6367BF",
+        // purple
+
+        "vgb-bg": "#F1F1F1"
+        //light grey
       }
     }
   },
