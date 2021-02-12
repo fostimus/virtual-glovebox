@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "extensions": [".js", ".ios.js", ".android.js"],
+        "alias": {
+          "assets": "./src/assets",
+          "components": "./src/components",
+          "base": "./src/components/base",
+          "tailwind": "./src/tailwind"
+        }
+      }
+    ]
+  ]
+}
