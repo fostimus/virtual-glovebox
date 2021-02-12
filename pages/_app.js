@@ -1,15 +1,33 @@
 import React from 'react'
-const firebase = require("firebase");
+const firebase = require('firebase');
+require('firebase/auth');
 // Required for side-effects
-require("firebase/firestore");
+require('firebase/firestore');
 // Initialize Cloud Firestore through Firebase
 firebase.initializeApp({
-    apiKey: 'AIzaSyBdn3aJkiL5zFqetN9_nG1Aw_y9m1oi-98',
-    authDomain: 'virtual-glovebox.firebaseapp.com',
-    projectId: 'virtual-glovebox'
+    apiKey: "AIzaSyBdn3aJkiL5zFqetN9_nG1Aw_y9m1oi-98",
+    authDomain: "virtual-glovebox.firebaseapp.com",
+    projectId: "virtual-glovebox",
+    storageBucket: "virtual-glovebox.appspot.com",
+    messagingSenderId: "428139105723",
+    appId: "1:428139105723:web:84d388ad87152503b0889e"
 });
 const db = firebase.firestore();
 console.log('sanity check', db)
+
+firebase.auth().createUserWithEmailAndPassword('endiawilliams1@gmail.com', 'password')
+  .then((userCredential) => {
+    // Signed in 
+    let user = userCredential.user;
+    // ...
+    console.log(user)
+  })
+  .catch((error) => {
+    let errorCode = error.code;
+    let errorMessage = error.message;
+    // ..
+    console.log(errorCode, errorMessage)
+});
 
 // creates a document with key:values
 db.collection('users').doc('user').set({
