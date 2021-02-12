@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Image } from "react-native";
 import { AppText, AppView } from "base";
 import SignInOptionContainer from "./SignInOptionContainer";
+import tailwind from "tailwind";
 import placeholder from "./placeholder.png";
 
 export default function SignIn() {
@@ -12,9 +13,9 @@ export default function SignIn() {
     : "Log in or sign up for free";
 
   return (
-    <AppView>
+    <AppView style={tailwind("flex flex-col justify-evenly h-full p-16")}>
       <Image source={placeholder} />
-      <AppText>{instructions}</AppText>
+      <AppText style={tailwind("text-center")}>{instructions}</AppText>
       <SignInOptionContainer
         options={["Email", "Google", "Apple"]}
         emailSignIn={emailSignIn}
