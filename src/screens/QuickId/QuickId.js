@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AppText, AppView } from "base";
+import { ExpandableCard } from "base/cards";
 import { Image, TextInput, TouchableOpacity } from "react-native";
 import Screen from "../Screen";
 import stockDL from "./stockDL.png";
@@ -43,6 +44,8 @@ export default function QuickId() {
         <Image source={edit} />
       </TouchableOpacity>
       <Image source={stockDL} />
+
+      <ExpandableCard title="Dev Team" items={["Derek", "Antonio", "Endia"]} />
     </Screen>
   );
 }
