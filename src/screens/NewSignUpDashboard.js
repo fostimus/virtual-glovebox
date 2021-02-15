@@ -1,25 +1,23 @@
 import React from "react";
 import { AppView, AppText } from "base";
 import { AppCard } from "base/cards";
-import { AppButton, SecondaryButton } from "base/buttons";
+import DashboardCardContainer from "../components/dashboard/DashboardCardContainer";
 import Screen from "./Screen";
 import tailwind from "tailwind";
 
-export default function NewSignUpDashboard(props) {
+/* note:
+ * this is eventually going to be the home screen.
+ * we will be using useState and useEffect to load the user's cars, notifications/reminders from backend + API integrations
+ */
+export default function NewSignUpDashboard() {
   const username = "Derek";
 
-  const options = ["Add Vehicle", "Add Driver's License", "Take a Tour"];
-
   return (
-    <Screen loggedIn style={tailwind("flex-1 items-center")}>
+    <Screen loggedIn>
       <AppText bold style={tailwind("text-3xl my-4")}>
         Hello, {username}
       </AppText>
-      <AppCard title="Get Started:">
-        {options.map(option => (
-          <SecondaryButton large key={option} text={option} />
-        ))}
-      </AppCard>
+      <DashboardCardContainer />
     </Screen>
   );
 }

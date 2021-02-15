@@ -1,3 +1,4 @@
 import AppCard from "./AppCard";
+import ExpandableCard from "./ExpandableCard";
 
-export { AppCard };
+export { AppCard, ExpandableCard };
