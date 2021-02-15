@@ -5,11 +5,15 @@ import DashboardCardContainer from "../components/dashboard/DashboardCardContain
 import Screen from "./Screen";
 import tailwind from "tailwind";
 
-export default function NewSignUpDashboard(props) {
+/* note:
+ * this is eventually going to be the home screen.
+ * we will be using useState and useEffect to load the user's cars, notifications/reminders from backend + API integrations
+ */
+export default function NewSignUpDashboard() {
   const username = "Derek";
 
   return (
-    <Screen loggedIn style={tailwind("flex-1 items-center")}>
+    <Screen loggedIn>
       <AppText bold style={tailwind("text-3xl my-4")}>
         Hello, {username}
       </AppText>
