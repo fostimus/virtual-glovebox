@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 // use screenOptions={{ headerShown: false }} on the Stack.Navigator to turn header off
 function App() {
-  const headerOptions = { title: "", headerStyle: tailwind("h-10 bg-black") };
+  const headerOptions = { title: "", headerStyle: tailwind("h-14 bg-black") };
 
   return (
     <NavigationContainer>

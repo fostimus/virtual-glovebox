@@ -1,0 +1,28 @@
+import React from "react";
+import { AppCard } from "base/cards";
+import { AppButton, SecondaryButton } from "base/buttons";
+import addCar from "./addCar.png";
+import addDL from "./addDL.png";
+import mapTrifold from "./MapTrifold.png";
+
+export default function DashboardCardContainer() {
+  const options = [
+    { title: "Add Vehicle", image: addCar },
+    { title: "Add Driver's License", image: addDL },
+    { title: "Take a Tour", image: mapTrifold }
+  ];
+
+  return (
+    <AppCard title="Get Started:">
+      {options.map(option => (
+        <SecondaryButton
+          large
+          key={option.title}
+          text={option.title}
+          image={option.image}
+          imageRight
+        />
+      ))}
+    </AppCard>
+  );
+}

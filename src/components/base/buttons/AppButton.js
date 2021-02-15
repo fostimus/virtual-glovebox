@@ -6,6 +6,8 @@ import tailwind from "tailwind";
 export default function AppButton({
   text,
   image,
+  imageLeft,
+  imageRight,
   style,
   action,
   small,
@@ -28,10 +30,11 @@ export default function AppButton({
   }
   return (
     <TouchableOpacity style={styles} onPress={action}>
-      {image && <Image source={image} />}
+      {imageLeft && <Image source={image} />}
       <AppText style={styles["color"] && { color: styles["color"] }}>
         {text}
       </AppText>
+      {imageRight && <Image source={image} />}
     </TouchableOpacity>
   );
 }
