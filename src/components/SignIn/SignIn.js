@@ -5,7 +5,7 @@ import SignInOptionContainer from "./SignInOptionContainer";
 import tailwind from "tailwind";
 import placeholder from "./placeholder.png";
 
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   const [emailSignIn, setEmailSignIn] = useState(false);
 
   const instructions = emailSignIn
@@ -17,6 +17,7 @@ export default function SignIn() {
       large
       style={tailwind("bg-gray-700 text-white")}
       text="Continue"
+      action={() => navigation.navigate("Dashboard")}
     />
   ) : (
     <AppText>Skip this step for now</AppText>

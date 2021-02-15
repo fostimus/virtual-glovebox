@@ -1,5 +1,5 @@
 import AppButton from "./AppButton";
-import { tailwind } from "tailwind";
+import tailwind from "tailwind";
 
 import React from "react";
 
@@ -13,7 +13,7 @@ export default function SecondaryButton({
 }) {
   return (
     <AppButton
-      style={tailwind("bg-vgb-purple")}
+      style={tailwind("bg-vgb-secondary text-vgb-tertiary")}
       text={text}
       image={image}
       action={action}

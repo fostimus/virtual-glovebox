@@ -26,8 +26,14 @@ module.exports = {
         "vgb-secondary": "#6367BF",
         // purple
 
-        "vgb-bg": "#F1F1F1"
+        "vgb-bg": "#F1F1F1",
         //light grey
+
+        "vgb-tertiary": "#DEE4ED",
+        //white/grey
+
+        "vgb-white": "#FDFCF9"
+        //off white, for nav
       }
     }
   },
