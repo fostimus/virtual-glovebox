@@ -13,6 +13,7 @@ export default function SingInOptionContainer({
 
   return (
     <AppView style={tailwind("")}>
+      {/* pass down the correct setState method for email, password, and name to the SignInField component */}
       {emailSignIn
         ? placeholders.map(placeholder => (
             <SignInField key={placeholder} placeholder={placeholder} />
