@@ -45,7 +45,7 @@ export default function QuickId() {
       </TouchableOpacity>
       <Image source={stockDL} />
 
-      <ExpandableCard title="Dev Team" items={["Derek", "Antonio", "Endia"]} />
+      <ExpandableCard title="Ford" items={["Registration", "Insurance"]} />
     </Screen>
   );
 }
