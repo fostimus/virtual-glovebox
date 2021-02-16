@@ -12,7 +12,9 @@ export default function NewVehicleScreen() {
       <AppTitle>Add New Vehicle</AppTitle>
       <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
         <CircleSteps filledIndex={0} />
-        <AppText>Do you have your vehicle's registration card?</AppText>
+        <AppText style={tailwind("text-xl w-60 text-center")}>
+          Do you have your vehicle's registration card?
+        </AppText>
         <AppView>
           <AppButton small text="Yes" />
           <AppButton small text="No" />
