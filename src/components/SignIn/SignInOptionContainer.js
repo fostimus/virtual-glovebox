@@ -7,16 +7,17 @@ import { SignInButton, SignInField } from "./options";
 export default function SingInOptionContainer({
   options,
   emailSignIn,
-  setEmailSignIn
+  setEmailSignIn,
+  setFormData
 }) {
-  const placeholders = ["Name", "Email", "Password"];
+  const placeholders = ["Email", "Password"];
 
   return (
     <AppView style={tailwind("")}>
       {/* pass down the correct setState method for email, password, and name to the SignInField component */}
       {emailSignIn
         ? placeholders.map(placeholder => (
-            <SignInField key={placeholder} placeholder={placeholder} />
+            <SignInField key={placeholder} placeholder={placeholder} setFormData={setFormData} />
           ))
         : options.map(option => (
             <SignInButton

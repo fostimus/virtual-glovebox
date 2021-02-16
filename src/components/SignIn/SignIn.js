@@ -5,12 +5,33 @@ import { AppText, AppView, AppButton } from "base";
 import SignInOptionContainer from "./SignInOptionContainer";
 import tailwind from "tailwind";
 import placeholder from "./placeholder.png";
+import { firebase } from "../../../pages/_app.js";
 
 export default function SignIn() {
   const navigation = useNavigation();
 
   const [emailSignIn, setEmailSignIn] = useState(false);
   //TODO: set up state variable to hold name, email, and password values here
+  const [formData, setFormData] = useState({
+    Email: '',
+    Password: ''
+  })
+
+  const authenticate = () => {
+    firebase.auth().signInWithEmailAndPassword(formData.Email, formData.Password)
+      .then((userCredential) => {
+        // Signed in
+        let user = userCredential.user;
+        // ...
+        console.log(`${user} successfully signed in!`)
+        navigation.navigate("Dashboard")
+    })
+      .catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+    });
+  }
 
   const instructions = emailSignIn
     ? "Sign up with Email"
@@ -21,7 +42,7 @@ export default function SignIn() {
       large
       style={tailwind("bg-gray-700 text-white")}
       text="Continue"
-      action={() => navigation.navigate("Dashboard")}
+      action={authenticate}
     />
   ) : (
     <AppText>Skip this step for now</AppText>
@@ -36,6 +57,7 @@ export default function SignIn() {
         options={["Email", "Google", "Apple"]}
         emailSignIn={emailSignIn}
         setEmailSignIn={setEmailSignIn}
+        setFormData={setFormData}
       />
       {footer}
     </AppView>

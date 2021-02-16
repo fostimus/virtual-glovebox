@@ -13,50 +13,36 @@ firebase.initializeApp({
     appId: "1:428139105723:web:84d388ad87152503b0889e"
 });
 const db = firebase.firestore();
-console.log('sanity check', db)
-
-firebase.auth().createUserWithEmailAndPassword('endiawilliams1@gmail.com', 'password')
-  .then((userCredential) => {
-    // Signed in 
-    let user = userCredential.user;
-    // ...
-    console.log(user)
-  })
-  .catch((error) => {
-    let errorCode = error.code;
-    let errorMessage = error.message;
-    // ..
-    console.log(errorCode, errorMessage)
-});
+// console.log('sanity check', db)
 
 // creates a document with key:values
-db.collection('users').doc('user').set({
-    FirstName: 'Endia',
-    LastName: 'Williams',
-    Email: 'test@test.com',
-    driverLicense: 'E256DL195',
-    vehicle: {
-        vin: 123456789,
-        LP: 'abc1234',
-        Insurance: 123456789,
-        address: 'mixed',
-        maintenance: [{ mechanic: 'details' }, { parts: 'namesOfParts' }, {}]
-    }
-}).then(() => {
-    console.log('Document successfully written!')
-}).catch((error) => {
-    console.log('Error writing document: ', error)
-})
+// db.collection('users').doc('user').set({
+//     FirstName: 'Endia',
+//     LastName: 'Williams',
+//     Email: 'test@test.com',
+//     driverLicense: 'E256DL195',
+//     vehicle: {
+//         vin: 123456789,
+//         LP: 'abc1234',
+//         Insurance: 123456789,
+//         address: 'mixed',
+//         maintenance: [{ mechanic: 'details' }, { parts: 'namesOfParts' }, {}]
+//     }
+// }).then(() => {
+//     console.log('Document successfully written!')
+// }).catch((error) => {
+//     console.log('Error writing document: ', error)
+// })
 
 // reads all documents in a collection from fireStore
-db.collection('users')
-    .get()
-    .then(querySnapshot => {
-        querySnapshot.forEach(doc => {
-            console.log(doc);
-            console.log(`${doc.id} => ${Object.entries(doc.data())}`);
-        });
-    });
+// db.collection('users')
+//     .get()
+//     .then(querySnapshot => {
+//         querySnapshot.forEach(doc => {
+//             console.log(doc);
+//             console.log(`${doc.id} => ${Object.entries(doc.data())}`);
+//         });
+// });
 
 
 // delete a document(the doc has to be very specific towards ID)
@@ -66,8 +52,7 @@ db.collection('users')
 //     console.log('Error removing document: ', error)
 // })
 
-
-export default function App({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
     return (
         <>
             <div>test</div>
@@ -75,3 +60,5 @@ export default function App({ Component, pageProps }) {
         </>
     )
 }
+
+export {App as default, firebase}
