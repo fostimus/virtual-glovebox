@@ -1,11 +1,10 @@
 import React from "react";
 import { AppView, AppText } from "base";
+import CircleStepsContainer from "./CircleStepsContainer";
+import tailwind from "tailwind";
 
-export default function CircleSteps({ title }) {
+export default function CircleSteps({ title, filledIndex }) {
   return (
-    <AppView>
-      <AppText>{title}</AppText>
-      <CircleStepsContainer steps={["1", "2", "3"]} />
-    </AppView>
+    <CircleStepsContainer steps={["1", "2", "3"]} filledIndex={filledIndex} />
   );
 }

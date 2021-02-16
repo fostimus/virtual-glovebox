@@ -9,7 +9,7 @@ export default function Screen({ style, loggedIn, children }) {
     <AppView
       style={{
         ...style,
-        ...tailwind("flex container items-center h-full bg-gray-300")
+        ...tailwind("flex container items-center h-full w-full bg-gray-300")
       }}
     >
       {children}
