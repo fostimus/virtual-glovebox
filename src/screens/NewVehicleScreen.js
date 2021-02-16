@@ -7,10 +7,12 @@ import tailwind from "tailwind";
 export default function NewVehicleScreen() {
   const [currentStep, setCurrentStep] = useState(0);
 
+  const title = "Add New Vehicle";
+
   return (
     <Screen loggedIn>
-      <AppTitle>Add New Vehicle</AppTitle>
-      {currentStep === 0 && <FirstStep />}
+      <AppTitle>{title}</AppTitle>
+      {currentStep === 0 && <FirstStep title={title} />}
     </Screen>
   );
 }
