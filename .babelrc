@@ -12,7 +12,7 @@
           "signin": "./src/components/signin",
           "dashboard": "./src/components/dashboard",
           "circlesteps": "./src/components/circlesteps",
-          "notifications": "./src/components/notifications",
+          "newvehicle": "./src/components/newvehicle",
           "navigation": "./src/components/navigation",
           "base": "./src/components/base",
           "tailwind": "./src/tailwind"
