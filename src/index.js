@@ -4,7 +4,13 @@ import { registerRootComponent } from "expo";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { SignInScreen, HomeScreen, QuickId, NewVehicleScreen } from "screens";
+import {
+  SignInScreen,
+  HomeScreen,
+  QuickId,
+  NewVehicleScreen,
+  NewVehicleFormScreen
+} from "screens";
 import tailwind from "tailwind";
 
 const Stack = createStackNavigator();
@@ -32,6 +38,11 @@ function App() {
         <Stack.Screen
           name="Add New Vehicle"
           component={NewVehicleScreen}
+          options={headerOptions}
+        />
+        <Stack.Screen
+          name="New Vehicle Form"
+          component={NewVehicleFormScreen}
           options={headerOptions}
         />
         <Stack.Screen

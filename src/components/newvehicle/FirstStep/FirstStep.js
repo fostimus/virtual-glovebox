@@ -77,7 +77,7 @@ function Action({ title }) {
             <AppButton
               small={btn1.small}
               text={btn1.text}
-              action={setNotif}
+              action={btn1.action}
               image={btn1.image}
               imageOptions={btn1.imageOptions}
             />
@@ -85,6 +85,7 @@ function Action({ title }) {
               small={btn2.small}
               text={btn2.text}
               image={btn2.image}
+              action={btn2.action}
               imageOptions={btn2.imageOptions}
             />
           </AppView>
