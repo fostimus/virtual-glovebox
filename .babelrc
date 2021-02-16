@@ -9,6 +9,9 @@
           "assets": "./src/assets",
           "screens": "./src/screens",
           "components": "./src/components",
+          "signin": "./src/components/signin",
+          "dashboard": "./src/components/dashboard",
+          "circlesteps": "./src/components/circlesteps",
           "navigation": "./src/components/navigation",
           "base": "./src/components/base",
           "tailwind": "./src/tailwind"

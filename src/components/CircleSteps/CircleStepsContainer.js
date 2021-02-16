@@ -1,15 +1,19 @@
 import React from "react";
-import { AppView } from "base";
+import { AppView, AppText } from "base";
+import CircleStep from "./CircleStep";
+import tailwind from "tailwind";
 
-export default function CircleStepsContainer({ steps }) {
+export default function CircleStepsContainer({ steps, filledIndex }) {
   return (
-    <AppView>
+    <AppView style={tailwind("w-full h-16 flex flex-row justify-evenly ")}>
       {steps.map((step, index) => (
         <>
-          <CircleStep step={step} />
+          <CircleStep step={step} filled={index === filledIndex} />
           {index !== steps.length - 1 && (
-            <div>line</div>
-          ) /* TODO: need to draw a line here, except for last step. replace the div with the drawn line */}
+            <AppView style={tailwind("flex h-full justify-center")}>
+              <AppView style={tailwind("h-1 w-10 bg-vgb-secondary")} />
+            </AppView>
+          )}
         </>
       ))}
     </AppView>
