@@ -26,6 +26,7 @@
     "postcss": "^7.0.35",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
+    "react-addons-create-fragment": "^15.6.2",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-gesture-handler": "~1.8.0",
