@@ -32,8 +32,11 @@ module.exports = {
         "vgb-tertiary": "#DEE4ED",
         //white/grey
 
-        "vgb-white": "#FDFCF9"
-        //off white, for nav
+        "vgb-white": "#FDFCF9",
+        //off white, for nav,
+
+        "vgb-card-border": "#DEE4ED"
+        // border for white cards
       }
     }
   },

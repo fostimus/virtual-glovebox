@@ -19,9 +19,8 @@ export default function SignIn() {
   const footer = emailSignIn ? (
     <AppButton
       large
-      style={tailwind("bg-gray-700 text-white")}
       text="Continue"
-      action={() => navigation.navigate("Dashboard")}
+      action={() => navigation.navigate("Home")}
     />
   ) : (
     <AppText>Skip this step for now</AppText>

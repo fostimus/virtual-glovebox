@@ -20,7 +20,6 @@ export default function SignInButton({ option, setEmailSignIn }) {
       text={"Sign In with " + option}
       imageLeft
       image={imgObj[option.toLowerCase()]}
-      style={tailwind("bg-gray-400")}
       action={() => option === "Email" && setEmailSignIn(true)}
     />
   );

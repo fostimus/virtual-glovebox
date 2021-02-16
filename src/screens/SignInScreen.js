@@ -1,14 +1,14 @@
 import React from "react";
 import { AppView } from "base";
-import Screen from "./Screen";
-
+import NavBar from "navigation";
 import SignIn from "../components/SignIn";
 import tailwind from "tailwind";
+import Screen from "./Screen";
 
-export default function Home({ navigation }) {
+export default function SignInScreen() {
   return (
-    <Screen loggedIn>
-      <SignIn navigation={navigation} />
+    <Screen>
+      <SignIn />
     </Screen>
   );
 }
