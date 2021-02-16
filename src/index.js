@@ -4,7 +4,7 @@ import { registerRootComponent } from "expo";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Home, NewSignUpDashboard, QuickId } from "screens";
+import { SignInScreen, HomeScreen, QuickId } from "screens";
 import tailwind from "tailwind";
 
 const Stack = createStackNavigator();
@@ -19,11 +19,15 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} options={headerOptions} />
         <Stack.Screen
-          name="Dashboard"
+          name="Sign In"
+          component={SignInScreen}
           options={headerOptions}
-          component={NewSignUpDashboard}
+        />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={headerOptions}
         />
         <Stack.Screen
           name="Quick ID"

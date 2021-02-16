@@ -1,5 +1,5 @@
-import Home from "./Home";
-import NewSignUpDashboard from "./NewSignUpDashboard";
+import HomeScreen from "./HomeScreen";
 import QuickId from "./QuickId";
+import SignInScreen from "./SignInScreen";
 
-export { Home, NewSignUpDashboard, QuickId };
+export { HomeScreen, QuickId, SignInScreen };

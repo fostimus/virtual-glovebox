@@ -9,7 +9,7 @@ import tailwind from "tailwind";
  * this is eventually going to be the home screen.
  * we will be using useState and useEffect to load the user's cars, notifications/reminders from backend + API integrations
  */
-export default function NewSignUpDashboard() {
+export default function HomeScreen() {
   const username = "Derek";
 
   return (
