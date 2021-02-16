@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import CircleSteps from "circlesteps";
 import { AppView, AppText, AppTitle } from "base";
 import { AppButton } from "base/buttons";
-import Notification from "./Notification";
+import Notification from "../Notification";
+import camera from "./camera.png";
 import tailwind from "tailwind";
 
 export default function FirstStep() {
@@ -18,8 +19,18 @@ function Action() {
   const [question, setQuestion] = useState(
     "Do you have your vehicle's registration card?"
   );
-  const [btn1, setBtn1] = useState({ small: true, text: "Yes", image: null });
-  const [btn2, setBtn2] = useState({ small: true, text: "No", image: null });
+  const [btn1, setBtn1] = useState({
+    small: true,
+    text: "Yes",
+    image: null,
+    imageOptions: null
+  });
+  const [btn2, setBtn2] = useState({
+    small: true,
+    text: "No",
+    image: null,
+    imageOptions: null
+  });
   const [haveRegistration, setHaveRegistration] = useState(false);
 
   const setNotif = () => {
@@ -27,9 +38,14 @@ function Action() {
     setBtn1({
       small: false,
       text: "Scan",
+      image: camera,
+      imageOptions: { imageLeft: true, style: tailwind("w-8 h-8") }
+    });
+    setBtn2({
+      small: false,
+      text: "Input Manually",
       image: ""
     });
-    setBtn2("Input Manually");
 
     // toggle and set timeout for registration notif
     setHaveRegistration(true);
@@ -47,8 +63,19 @@ function Action() {
             {question}
           </AppText>
           <AppView>
-            <AppButton small={btn1.small} text={btn1.text} action={setNotif} />
-            <AppButton small={btn2.small} text={btn2.text} />
+            <AppButton
+              small={btn1.small}
+              text={btn1.text}
+              action={setNotif}
+              image={btn1.image}
+              imageOptions={btn1.imageOptions}
+            />
+            <AppButton
+              small={btn2.small}
+              text={btn2.text}
+              image={btn2.image}
+              imageOptions={btn2.imageOptions}
+            />
           </AppView>
         </>
       )}

@@ -5,8 +5,7 @@ import React from "react";
 
 export default function SecondaryButton({
   text,
-  imageLeft,
-  imageRight,
+  imageOptions,
   image,
   style,
   action,
@@ -17,8 +16,7 @@ export default function SecondaryButton({
     <AppButton
       style={tailwind("bg-vgb-secondary text-vgb-tertiary")}
       text={text}
-      imageLeft={imageLeft}
-      imageRight={imageRight}
+      imageOptions={imageOptions}
       image={image}
       action={action}
       small={small}
