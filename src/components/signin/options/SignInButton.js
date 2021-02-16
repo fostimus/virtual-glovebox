@@ -18,8 +18,8 @@ export default function SignInButton({ option, setEmailSignIn }) {
     <AppButton
       large
       text={"Sign In with " + option}
-      imageLeft
       image={imgObj[option.toLowerCase()]}
+      imageOptions={{ imageLeft: true }}
       action={() => option === "Email" && setEmailSignIn(true)}
     />
   );

@@ -35,8 +35,11 @@ module.exports = {
         "vgb-white": "#FDFCF9",
         //off white, for nav,
 
-        "vgb-card-border": "#DEE4ED"
+        "vgb-card-border": "#DEE4ED",
         // border for white cards
+
+        "vgb-notif": "#D7F380"
+        // notification color
       }
     }
   },

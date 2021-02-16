@@ -29,7 +29,7 @@ export default function DashboardCardContainer() {
           key={option.title}
           text={option.title}
           image={option.image}
-          imageRight
+          imageOptions={{ imageRight: true }}
           action={option.action}
         />
       ))}

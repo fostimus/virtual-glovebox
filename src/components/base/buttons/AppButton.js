@@ -6,8 +6,7 @@ import tailwind from "tailwind";
 export default function AppButton({
   text,
   image,
-  imageLeft,
-  imageRight,
+  imageOptions,
   style,
   action,
   small,
@@ -28,13 +27,21 @@ export default function AppButton({
   if (small && large) {
     // can't do this
   }
+
+  if (!imageOptions) {
+    imageOptions = {};
+  }
+
+  let textStyles = tailwind("text-lg");
+  if (styles["color"]) textStyles = { ...textStyles, color: styles["color"] };
+
   return (
     <TouchableOpacity style={styles} onPress={action}>
-      {imageLeft && <Image source={image} />}
-      <AppText style={styles["color"] && { color: styles["color"] }}>
-        {text}
-      </AppText>
-      {imageRight && <Image source={image} />}
+      {imageOptions.imageLeft && <Image source={image} />}
+      <AppText style={textStyles}>{text}</AppText>
+      {imageOptions.imageRight && (
+        <Image source={image} style={imageOptions.style} />
+      )}
     </TouchableOpacity>
   );
 }

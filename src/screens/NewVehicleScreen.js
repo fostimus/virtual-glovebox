@@ -1,25 +1,18 @@
-import React from "react";
-import CircleSteps from "circlesteps";
-import { AppView, AppText, AppTitle } from "base";
-import { AppButton } from "base/buttons";
+import React, { useState } from "react";
+import { AppTitle } from "base";
 import Screen from "./Screen";
+import { FirstStep } from "newvehicle";
 import tailwind from "tailwind";
 
 export default function NewVehicleScreen() {
-  //note: make a "AppTitle" component to auto style the title of each page
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const title = "Add New Vehicle";
+
   return (
     <Screen loggedIn>
-      <AppTitle>Add New Vehicle</AppTitle>
-      <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
-        <CircleSteps filledIndex={0} />
-        <AppText style={tailwind("text-xl w-60 text-center")}>
-          Do you have your vehicle's registration card?
-        </AppText>
-        <AppView>
-          <AppButton small text="Yes" />
-          <AppButton small text="No" />
-        </AppView>
-      </AppView>
+      <AppTitle>{title}</AppTitle>
+      {currentStep === 0 && <FirstStep title={title} />}
     </Screen>
   );
 }
