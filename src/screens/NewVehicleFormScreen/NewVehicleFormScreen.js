@@ -59,10 +59,10 @@ export default function NewVehicleFormScreen({ route }) {
           </FormItem>
         </FormRow>
         <FormRow>
-          <FormItem name="Reg. Valid From:">
+          <FormItem name="Reg. Valid From">
             <FormInput />
           </FormItem>
-          <FormItem name="Reg. Valid To:">
+          <FormItem name="Reg. Valid To">
             <FormInput />
           </FormItem>
         </FormRow>
