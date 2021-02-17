@@ -1,3 +1,3 @@
-import SignIn from "./SignIn";
+import SignInActions from "./SignInActions";
 
-export default SignIn;
+export default SignInActions;

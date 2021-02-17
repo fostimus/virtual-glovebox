@@ -7,12 +7,13 @@ import { SignInButton, SignInField } from "./options";
 import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../../../pages/_app.js";
 
-export default function SignIn({
-  options,
-  emailSignIn,
-  setEmailSignIn,
-  setFormData
-}) {
+export default function SignInActions({ options }) {
+  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    Email: "",
+    Password: ""
+  });
+
   const navigation = useNavigation();
 
   const placeholders = ["Email", "Password"];
@@ -65,9 +66,11 @@ export default function SignIn({
 
   return (
     <AppView style={tailwind("")}>
+      <SignInField placeholder="Email" setValue={setEmail} />
       <AppButton
         text="Continue"
         large
+        disabled={email === "" /* TODO: validate email */}
         action={() => navigation.navigate("Home")}
       />
       <AppView
@@ -79,21 +82,17 @@ export default function SignIn({
         </AppText>
         {line}
       </AppView>
-      {emailSignIn
-        ? placeholders.map(placeholder => (
-            <SignInField
-              key={placeholder}
-              placeholder={placeholder}
-              setFormData={setFormData}
-            />
-          ))
-        : options.map(option => (
-            <SignInButton
-              key={option}
-              option={option}
-              setEmailSignIn={setEmailSignIn}
-            />
-          ))}
+      {options.map(option => (
+        <SignInButton key={option} option={option} />
+      ))}
     </AppView>
   );
 }
+
+/**
+ * <SignInField
+   key={placeholder}
+   placeholder={placeholder}
+   setFormData={setFormData}
+ />
+ */

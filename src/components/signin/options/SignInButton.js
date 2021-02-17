@@ -10,14 +10,13 @@ const imgObj = {
   apple: apple
 };
 
-export default function SignInButton({ option, setEmailSignIn }) {
+export default function SignInButton({ option }) {
   return (
     <AppButton
       large
       text={"Sign In with " + option}
       image={imgObj[option.toLowerCase()]}
       imageOptions={{ imageLeft: true }}
-      action={() => option === "Email" && setEmailSignIn(true)}
     />
   );
 }

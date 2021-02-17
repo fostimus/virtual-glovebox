@@ -7,13 +7,6 @@ import Screen from "../Screen";
 import logo from "./Logo.png";
 
 export default function LandingScreen() {
-  const [emailSignIn, setEmailSignIn] = useState(false);
-
-  const [formData, setFormData] = useState({
-    Email: "",
-    Password: ""
-  });
-
   return (
     <Screen style={tailwind("justify-evenly")}>
       <AppView style={tailwind("flex items-center")}>
@@ -26,12 +19,7 @@ export default function LandingScreen() {
         Log in or sign up for free
       </AppText>
 
-      <SignInOptionContainer
-        options={["Google", "Apple"]}
-        emailSignIn={emailSignIn}
-        setEmailSignIn={setEmailSignIn}
-        setFormData={setFormData}
-      />
+      <SignInOptionContainer options={["Google", "Apple"]} />
     </Screen>
   );
 }

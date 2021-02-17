@@ -11,7 +11,8 @@ export default function SecondaryButton({
   action,
   small,
   large,
-  bold
+  bold,
+  disabled
 }) {
   return (
     <AppButton
