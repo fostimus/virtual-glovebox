@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Image } from "react-native";
-import { AppText, AppView } from "base";
+import { AppText, AppView, AppTitle } from "base";
 import { AppButton } from "base/buttons";
 import SignInOptionContainer from "./SignInOptionContainer";
 import tailwind from "tailwind";
-import placeholder from "./placeholder.png";
+import logo from "./Logo.png";
 
 export default function SignIn() {
   const navigation = useNavigation();
 
   const [emailSignIn, setEmailSignIn] = useState(false);
-  //TODO: set up state variable to hold name, email, and password values here
-
-  const instructions = emailSignIn
-    ? "Sign up with Email"
-    : "Log in or sign up for free";
 
   const footer = emailSignIn ? (
     <AppButton
@@ -29,9 +24,16 @@ export default function SignIn() {
 
   return (
     <AppView style={tailwind("flex flex-col justify-evenly h-full p-16")}>
-      <Image source={placeholder} />
-      <AppText style={tailwind("text-center")}>{instructions}</AppText>
-      {/* pass down name, email, password setState methods here */}
+      <AppView style={tailwind("flex items-center")}>
+        <Image source={logo} />
+        <AppTitle style={tailwind("w-32 text-center")}>
+          Virtual Glovebox
+        </AppTitle>
+      </AppView>
+      <AppText style={tailwind("text-center")}>
+        Log in or sign up for free
+      </AppText>
+
       <SignInOptionContainer
         options={["Email", "Google", "Apple"]}
         emailSignIn={emailSignIn}
