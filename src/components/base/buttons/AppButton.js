@@ -10,7 +10,8 @@ export default function AppButton({
   style,
   action,
   small,
-  large
+  large,
+  bold
 }) {
   let width = "w-44";
   if (small) width = "w-28";
@@ -38,7 +39,9 @@ export default function AppButton({
   return (
     <TouchableOpacity style={styles} onPress={action}>
       {imageOptions.imageLeft && <Image source={image} />}
-      <AppText style={textStyles}>{text}</AppText>
+      <AppText bold={bold} style={textStyles}>
+        {text}
+      </AppText>
       {imageOptions.imageRight && (
         <Image source={image} style={imageOptions.style} />
       )}

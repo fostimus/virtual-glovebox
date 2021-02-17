@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Screen from "../Screen";
 import { AppTitle, AppView, AppText } from "base";
+import { AppButton, CancelButton } from "base/buttons";
 import { AppCard } from "base/cards";
 import DropDownPicker from "react-native-dropdown-picker";
 import { TouchableOpacity, Image, TextInput } from "react-native";
@@ -11,7 +12,7 @@ export default function NewVehicleFormScreen({ route }) {
   return (
     <Screen loggedIn>
       <AppTitle>{route.params.title}</AppTitle>
-      <AppCard title="Registration Info" titleStyles={tailwind("self-center")}>
+      <AppCard title="Registration Info">
         <FormRow>
           <FormItem name="Make">
             <Dropdown
@@ -43,24 +44,61 @@ export default function NewVehicleFormScreen({ route }) {
               ]}
             />
           </FormItem>
-          <FormItem name="Model">
-            <Dropdown
-              large
-              options={[
-                { label: "Honda", value: "Honda" },
-                { label: "Toyota", value: "Toyota" },
-                { label: "Tesla", value: "Tesla" }
-              ]}
-            />
+          <FormItem name="License Plate">
+            <FormInput large />
           </FormItem>
         </FormRow>
         <FormRow>
-          <FormItem name="License Plate">
-            <FormInput></FormInput>
+          <FormItem single name="Vehicle Identification Number (VIN)">
+            <FormInput full />
           </FormItem>
         </FormRow>
+        <FormRow>
+          <FormItem single name="Registered Owner">
+            <FormInput full />
+          </FormItem>
+        </FormRow>
+        <FormRow>
+          <FormItem name="Reg. Valid From:">
+            <FormInput />
+          </FormItem>
+          <FormItem name="Reg. Valid To:">
+            <FormInput />
+          </FormItem>
+        </FormRow>
+        <AppView
+          style={tailwind(
+            "flex flex-row w-full justify-evenly border-t border-solid border-gray-400"
+          )}
+        >
+          <CancelButton small bold text="Cancel" />
+          <AppButton small bold text="Accept" />
+        </AppView>
       </AppCard>
     </Screen>
+  );
+}
+
+function FormRow({ children }) {
+  return (
+    <AppView
+      style={tailwind("w-full flex flex-row justify-between pb-2 pl-4 pr-4")}
+    >
+      {children}
+    </AppView>
+  );
+}
+
+function FormItem({ name, children, single }) {
+  let style = "";
+  if (single) style = "w-full";
+  return (
+    <AppView style={tailwind(style)}>
+      <AppText>
+        {name}: <AppText style={tailwind("text-red-500")}>*</AppText>
+      </AppText>
+      {children}
+    </AppView>
   );
 }
 
@@ -80,38 +118,27 @@ function Dropdown({ small, large, options }) {
       itemStyle={{
         justifyContent: "flex-start"
       }}
-      dropDownStyle={{ backgroundColor: "#fafafa" }}
+      dropDownStyle={tailwind("absolute z-50 bg-blue-500")}
       items={options}
       onChangeItem={item => setValue(item.value)}
     />
   );
 }
 
-function FormItem({ name, children }) {
-  return (
-    <AppView>
-      <AppText>
-        {name}: <AppText style={tailwind("text-red-500")}>*</AppText>
-      </AppText>
-      {children}
-    </AppView>
-  );
-}
+function FormInput({ small, large, full }) {
+  let width = "w-36";
+  if (small) width = "w-20";
+  if (large) width = "w-52";
+  if (full) width = "w-full";
 
-function FormInput({ name }) {
   return (
-    <TextInput
-      style={tailwind(
-        "w-36 bg-white h-10 border border-solid border-gray-400 rounded-lg"
-      )}
-    ></TextInput>
-  );
-}
-
-function FormRow({ children }) {
-  return (
-    <AppView style={tailwind("w-full flex flex-row justify-evenly")}>
-      {children}
+    <AppView style={tailwind("w-full")}>
+      <TextInput
+        style={tailwind(
+          width +
+            " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg"
+        )}
+      />
     </AppView>
   );
 }
