@@ -1,22 +1,23 @@
 import React, { useState } from "react";
-import { useNavigation } from "@react-navigation/native";
-import { Image, TextInput } from "react-native";
-import { AppText, AppView, AppTitle } from "base";
+import { TextInput, Image } from "react-native";
+import { AppView, AppText, HorizontalLine } from "base";
 import { AppButton } from "base/buttons";
-import SignInOptionContainer from "./SignInOptionContainer";
-import tailwind from "tailwind";
-import logo from "./Logo.png";
+import tailwind from "tailwind-rn";
+import { SignInButton, SignInField } from "./options";
+import { useNavigation } from "@react-navigation/native";
 import { firebase } from "../../../pages/_app.js";
 
-export default function SignIn() {
+export default function SignIn({
+  options,
+  emailSignIn,
+  setEmailSignIn,
+  setFormData
+}) {
   const navigation = useNavigation();
 
-  const [emailSignIn, setEmailSignIn] = useState(false);
+  const placeholders = ["Email", "Password"];
 
-  const [formData, setFormData] = useState({
-    Email: "",
-    Password: ""
-  });
+  const line = <HorizontalLine style={tailwind("w-16 bg-black")} />;
 
   const authenticate = () => {
     firebase
@@ -62,38 +63,37 @@ export default function SignIn() {
       });
   };
 
-  // const footer = emailSignIn ? (
-  //   <AppButton large text="Continue" action={authenticate} />
-  // ) : (
-  //
-  // );
-
   return (
-    <AppView style={tailwind("flex flex-col justify-evenly h-full p-16")}>
-      <AppView style={tailwind("flex items-center")}>
-        <Image source={logo} />
-        <AppTitle style={tailwind("w-32 text-center")}>
-          Virtual Glovebox
-        </AppTitle>
-      </AppView>
-      <AppText style={tailwind("text-center")}>
-        Log in or sign up for free
-      </AppText>
-
-      <SignInOptionContainer
-        options={["Google", "Apple"]}
-        emailSignIn={emailSignIn}
-        setEmailSignIn={setEmailSignIn}
-        setFormData={setFormData}
-        authenticate={authenticate}
+    <AppView style={tailwind("")}>
+      <AppButton
+        text="Continue"
+        large
+        action={() => navigation.navigate("Home")}
       />
+      <AppView
+        style={tailwind("h-10 flex flex-row items-center justify-evenly")}
+      >
+        {line}
+        <AppText bold style={tailwind("text-xl")}>
+          or use
+        </AppText>
+        {line}
+      </AppView>
+      {emailSignIn
+        ? placeholders.map(placeholder => (
+            <SignInField
+              key={placeholder}
+              placeholder={placeholder}
+              setFormData={setFormData}
+            />
+          ))
+        : options.map(option => (
+            <SignInButton
+              key={option}
+              option={option}
+              setEmailSignIn={setEmailSignIn}
+            />
+          ))}
     </AppView>
   );
 }
-
-/**
- * skip this step - in design, but we don't need this
- * <AppText style={tailwind("underline text-gray-400 text-center")}>
-   Skip this step for now
- </AppText>
- */

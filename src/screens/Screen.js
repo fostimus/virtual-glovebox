@@ -8,8 +8,8 @@ export default function Screen({ style, loggedIn, children }) {
   return (
     <AppView
       style={{
-        ...style,
-        ...tailwind("flex container items-center h-full w-full bg-gray-300")
+        ...tailwind("flex container items-center h-full w-full bg-gray-300"),
+        ...style
       }}
     >
       {children}
