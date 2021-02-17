@@ -5,6 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import addCar from "./addCar.png";
 import addDL from "./addDL.png";
 import mapTrifold from "./MapTrifold.png";
+import tailwind from "tailwind";
 
 export default function DashboardCardContainer() {
   const navigation = useNavigation();
@@ -22,7 +23,7 @@ export default function DashboardCardContainer() {
   ];
 
   return (
-    <AppCard title="Get Started:">
+    <AppCard title="Get Started:" titleStyles={tailwind("self-start ml-4")}>
       {options.map(option => (
         <SecondaryButton
           large

@@ -12,7 +12,7 @@ export default function NewVehicleFormScreen({ route }) {
   return (
     <Screen loggedIn>
       <AppTitle>{route.params.title}</AppTitle>
-      <AppCard title="Registration Info" titleStyles={tailwind("self-center")}>
+      <AppCard title="Registration Info">
         <FormRow>
           <FormItem name="Make">
             <Dropdown
