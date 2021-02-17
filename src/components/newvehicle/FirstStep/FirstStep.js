@@ -61,7 +61,7 @@ function Action({ title }) {
     setHaveRegistration(true);
     setTimeout(() => {
       setHaveRegistration(false);
-    }, 4000);
+    }, 2000);
   }
 
   return (
