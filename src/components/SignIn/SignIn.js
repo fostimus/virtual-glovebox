@@ -18,20 +18,42 @@ export default function SignIn() {
   })
 
   const authenticate = () => {
-    firebase.auth().signInWithEmailAndPassword(formData.Email, formData.Password)
-      .then((userCredential) => {
-        // Signed in
-        let user = userCredential.user;
-        // ...
-        console.log(`${user} successfully signed in!`)
-        navigation.navigate("Dashboard")
-    })
+    firebase.auth().fetchSignInMethodsForEmail(formData.Email)
+      .then((result) => {
+        if (result.length > 1) {
+          firebase.auth().signInWithEmailAndPassword(formData.Email, formData.Password)
+            .then((userCredential) => {
+            // Signed in
+            let user = userCredential.user;
+            // ...
+            console.log(`${user} successfully signed in!`)
+          })
+          .catch((error) => {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+          })
+        } else {
+          firebase.auth().createUserWithEmailAndPassword(formData.Email, formData.Password)
+            .then((userCredential) => {
+            // Signed in 
+            let user = userCredential.user;
+            // ...
+          })
+          .catch((error) => {
+            let errorCode = error.code;
+            let errorMessage = error.message;
+            // ..
+            console.log(errorCode, errorMessage)
+          });
+        }
+      })
       .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        console.log(errorCode, errorMessage)
-    });
-  }
+        console.log(error)
+      })
+
+      navigation.navigate("Dashboard")
+}
 
   const instructions = emailSignIn
     ? "Sign up with Email"
