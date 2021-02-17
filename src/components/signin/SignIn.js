@@ -17,38 +17,53 @@ export default function SignIn() {
     Email: '',
     Password: ''
   })
+  const [errorMessage, setErrorMessage] = useState('');
 
   const authenticate = () => {
     firebase.auth().fetchSignInMethodsForEmail(formData.Email)
       .then((result) => {
-        console.log(result.length)
         if (result.length >= 1) {
           firebase.auth().signInWithEmailAndPassword(formData.Email, formData.Password)
             .then((userCredential) => {
-            // Signed in
             let user = userCredential.user;
-            // ...
             console.log(`${user} successfully signed in!`)
             navigation.navigate("Home")
           })
           .catch((error) => {
             let errorCode = error.code;
-            let errorMessage = error.message;
-            console.log(errorCode, errorMessage)
+
+            if (errorCode === 'auth/wrong-password') {
+              setErrorMessage('Invalid password.')
+            }
+
+            if (errorCode === 'auth/internal-error') {
+              setErrorMessage('Internal error.')
+            }
+
+            if (errorCode === 'auth/weak-password') {
+              setErrorMessage('Password too short.')
+            }
+
+            if (errorCode === 'auth/invalid-email') {
+              setErrorMessage('Not a valid email.')
+            }
           })
         } else {
           firebase.auth().createUserWithEmailAndPassword(formData.Email, formData.Password)
             .then((userCredential) => {
-            // Signed in 
             let user = userCredential.user;
-            // ...
             navigation.navigate("Home")
           })
           .catch((error) => {
             let errorCode = error.code;
-            let errorMessage = error.message;
-            // ..
-            console.log(errorCode, errorMessage)
+
+            if (errorCode === 'auth/invalid-email') {
+              setErrorMessage('Not a valid email.')
+            }
+
+            if (errorCode === 'auth/weak-password') {
+              setErrorMessage('Password too short.')
+            }
           });
         }
       })
@@ -83,6 +98,7 @@ export default function SignIn() {
         setFormData={setFormData}
       />
       {footer}
+      <AppText style={tailwind("text-center")}>{errorMessage}</AppText>
     </AppView>
   );
 }
