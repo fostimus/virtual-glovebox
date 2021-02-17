@@ -6,7 +6,7 @@ import DropDownPicker from "react-native-dropdown-picker";
 import { TouchableOpacity, Image, TextInput } from "react-native";
 import tailwind from "tailwind";
 
-export default function AppForm({ title, rows }) {
+export default function AppForm({ title, rows, cancelAction, acceptAction }) {
   /*
    * rows: [[{name: "Make" type: "dropdown", options: []},{}],[],[{name: "Vehicle Identification Number (VIN)"}]]
    */
@@ -23,6 +23,7 @@ export default function AppForm({ title, rows }) {
               full={row.length === 1}
               type={item.type}
               options={item.options}
+              setValue={item.setValue}
             />
           ))}
         </FormRow>
@@ -33,8 +34,8 @@ export default function AppForm({ title, rows }) {
           "flex flex-row w-full justify-evenly border-t border-solid border-gray-400"
         )}
       >
-        <CancelButton small bold text="Cancel" />
-        <AppButton small bold text="Accept" />
+        <CancelButton small bold text="Cancel" action={cancelAction} />
+        <AppButton small bold text="Accept" action={acceptAction} />
       </AppView>
     </AppCard>
   );
@@ -50,9 +51,17 @@ function FormRow({ children }) {
   );
 }
 
-function FormItem({ small, large, full, name, type, options, children }) {
-  const [value, setValue] = useState("");
-
+//TODO: split off child and input type checking to own helper function. include "date" as an input type
+function FormItem({
+  small,
+  large,
+  full,
+  name,
+  type,
+  options,
+  children,
+  setValue
+}) {
   let width = "w-36";
   if (small) width = "w-20";
   if (large) width = "w-52";
@@ -75,6 +84,7 @@ function FormItem({ small, large, full, name, type, options, children }) {
     ) : (
       <AppView style={tailwind("w-full")}>
         <TextInput
+          onChangeText={text => setValue(text)}
           style={tailwind(
             width +
               " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg"
