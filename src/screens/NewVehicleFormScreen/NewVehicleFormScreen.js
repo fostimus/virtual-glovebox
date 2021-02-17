@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Screen from "../Screen";
 import { AppTitle, AppView, AppText } from "base";
+import { AppButton, CancelButton } from "base/buttons";
 import { AppCard } from "base/cards";
 import DropDownPicker from "react-native-dropdown-picker";
 import { TouchableOpacity, Image, TextInput } from "react-native";
@@ -57,6 +58,22 @@ export default function NewVehicleFormScreen({ route }) {
             <FormInput full />
           </FormItem>
         </FormRow>
+        <FormRow>
+          <FormItem name="Reg. Valid From:">
+            <FormInput />
+          </FormItem>
+          <FormItem name="Reg. Valid To:">
+            <FormInput />
+          </FormItem>
+        </FormRow>
+        <AppView
+          style={tailwind(
+            "flex flex-row w-full justify-evenly border-t border-solid border-gray-400"
+          )}
+        >
+          <CancelButton small bold text="Cancel" />
+          <AppButton small bold text="Accept" />
+        </AppView>
       </AppCard>
     </Screen>
   );
