@@ -1,5 +1,5 @@
 import React from "react";
-import { AppView, AppText } from "base";
+import { AppView, AppText, AppTitle } from "base";
 import tailwind from "tailwind";
 
 export default function AppCard({ title, titleStyles, children }) {
@@ -9,7 +9,12 @@ export default function AppCard({ title, titleStyles, children }) {
         "flex items-center justify-center w-11/12 rounded-md bg-white my-2"
       )}
     >
-      <AppText style={{ ...tailwind("mt-4"), ...titleStyles }}>{title}</AppText>
+      <AppText
+        bold
+        style={{ ...tailwind("my-6 text-2xl self-start ml-4"), ...titleStyles }}
+      >
+        {title}
+      </AppText>
       {children}
     </AppView>
   );
