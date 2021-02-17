@@ -5,7 +5,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
-  SignInScreen,
+  LandingScreen,
   HomeScreen,
   QuickId,
   NewVehicleScreen,
@@ -26,8 +26,8 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Sign In"
-          component={SignInScreen}
+          name="Landing Screen"
+          component={LandingScreen}
           options={headerOptions}
         />
         <Stack.Screen

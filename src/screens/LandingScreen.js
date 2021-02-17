@@ -5,7 +5,7 @@ import SignIn from "signin";
 import tailwind from "tailwind";
 import Screen from "./Screen";
 
-export default function SignInScreen() {
+export default function LandingScreen() {
   return (
     <Screen>
       <SignIn />

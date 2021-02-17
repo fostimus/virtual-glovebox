@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Image } from "react-native";
+import { Image, TextInput } from "react-native";
 import { AppText, AppView, AppTitle } from "base";
 import { AppButton } from "base/buttons";
 import SignInOptionContainer from "./SignInOptionContainer";
@@ -12,7 +12,7 @@ export default function SignIn() {
   const navigation = useNavigation();
 
   const [emailSignIn, setEmailSignIn] = useState(false);
-  //TODO: set up state variable to hold name, email, and password values here
+
   const [formData, setFormData] = useState({
     Email: "",
     Password: ""
@@ -23,7 +23,6 @@ export default function SignIn() {
       .auth()
       .fetchSignInMethodsForEmail(formData.Email)
       .then(result => {
-        console.log(result.length);
         if (result.length >= 1) {
           firebase
             .auth()
@@ -63,11 +62,11 @@ export default function SignIn() {
       });
   };
 
-  const footer = emailSignIn ? (
-    <AppButton large text="Continue" action={authenticate} />
-  ) : (
-    <AppText>Skip this step for now</AppText>
-  );
+  // const footer = emailSignIn ? (
+  //   <AppButton large text="Continue" action={authenticate} />
+  // ) : (
+  //
+  // );
 
   return (
     <AppView style={tailwind("flex flex-col justify-evenly h-full p-16")}>
@@ -82,12 +81,19 @@ export default function SignIn() {
       </AppText>
 
       <SignInOptionContainer
-        options={["Email", "Google", "Apple"]}
+        options={["Google", "Apple"]}
         emailSignIn={emailSignIn}
         setEmailSignIn={setEmailSignIn}
         setFormData={setFormData}
+        authenticate={authenticate}
       />
-      {footer}
     </AppView>
   );
 }
+
+/**
+ * skip this step - in design, but we don't need this
+ * <AppText style={tailwind("underline text-gray-400 text-center")}>
+   Skip this step for now
+ </AppText>
+ */
