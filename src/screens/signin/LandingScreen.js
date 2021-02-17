@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image } from "react-native";
 import { AppView, AppText, AppTitle } from "base";
-import SignInOptionContainer from "signin";
+import SignInActions from "signin";
 import tailwind from "tailwind";
 import Screen from "../Screen";
 import logo from "./Logo.png";
@@ -19,7 +19,7 @@ export default function LandingScreen() {
         Log in or sign up for free
       </AppText>
 
-      <SignInOptionContainer options={["Google", "Apple"]} />
+      <SignInActions options={["Google", "Apple"]} />
     </Screen>
   );
 }

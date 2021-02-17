@@ -1,5 +1,5 @@
 import React from "react";
-import { AppView } from "base";
+import AppView from "./AppView";
 import tailwind from "tailwind";
 
 export default function HorizontalLine({ style }) {

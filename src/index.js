@@ -4,8 +4,8 @@ import { registerRootComponent } from "expo";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { LandingScreen, SignUpScreen } from "screens/signin";
 import {
-  LandingScreen,
   HomeScreen,
   QuickId,
   NewVehicleScreen,
@@ -28,6 +28,11 @@ function App() {
         <Stack.Screen
           name="Landing Screen"
           component={LandingScreen}
+          options={headerOptions}
+        />
+        <Stack.Screen
+          name="Sign Up Screen"
+          component={SignUpScreen}
           options={headerOptions}
         />
         <Stack.Screen
