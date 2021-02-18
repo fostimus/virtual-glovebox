@@ -20,7 +20,7 @@ export default function SignInThirdParty({ options }) {
         {line}
       </AppView>
       {options.map(option => (
-        <SignInButton key={option} option={option} />
+        <SignInButton key={option.name} option={option} />
       ))}
     </>
   );

@@ -5,6 +5,7 @@ import { SignInActions } from "signin";
 import tailwind from "tailwind";
 import Screen from "../Screen";
 import logo from "./Logo.png";
+import thirdPartyOptions from "./thirdPartyOptions";
 
 export default function LandingScreen() {
   return (
@@ -19,7 +20,7 @@ export default function LandingScreen() {
         Log in or sign up for free
       </AppText>
 
-      <SignInActions options={["Google", "Apple"]} />
+      <SignInActions options={thirdPartyOptions} />
     </Screen>
   );
 }
