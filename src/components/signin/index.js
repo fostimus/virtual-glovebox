@@ -1,3 +1,4 @@
 import SignInActions from "./SignInActions";
+import SignUpForm from "./SignUpForm";
 
-export default SignInActions;
+export { SignInActions, SignUpForm };

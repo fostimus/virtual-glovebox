@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Image } from "react-native";
 import { AppView, AppText, AppTitle } from "base";
-import SignInActions from "signin";
+import { SignInActions } from "signin";
 import tailwind from "tailwind";
 import Screen from "../Screen";
 import logo from "./Logo.png";
