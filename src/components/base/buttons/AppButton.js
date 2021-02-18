@@ -11,12 +11,14 @@ export default function AppButton({
   action,
   small,
   large,
-  bold
+  bold,
+  disabled
 }) {
   let width = "w-44";
   if (small) width = "w-28";
   if (large) width = "w-60";
-  const styles = {
+
+  let styles = {
     ...tailwind(
       "flex flex-row container justify-evenly items-center " +
         width +
@@ -24,6 +26,14 @@ export default function AppButton({
     ),
     ...style
   };
+
+  const disabledStyles = tailwind("bg-gray-400 text-gray-700");
+
+  if (disabled)
+    styles = {
+      ...styles,
+      ...disabledStyles
+    };
 
   if (small && large) {
     // can't do this
@@ -37,7 +47,7 @@ export default function AppButton({
   if (styles["color"]) textStyles = { ...textStyles, color: styles["color"] };
 
   return (
-    <TouchableOpacity style={styles} onPress={action}>
+    <TouchableOpacity disabled={disabled} style={styles} onPress={action}>
       {imageOptions.imageLeft && <Image source={image} />}
       <AppText bold={bold} style={textStyles}>
         {text}
