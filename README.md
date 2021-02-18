@@ -31,16 +31,16 @@ Prefix the following with `bg-` or `text-` to apply the style you want.
 -   `vgb-secondary` - currently a shade of purple
 -   `vgb-bg` - used for the app backgroud, currently a light grey
 
-## Deployment
+## Build & Deploy
 
-The web app is set up to automatically deploy on pushes to `main` branch. Check out the web app at: <https://virtual-glovebox.vercel.app/>
+To create a build of the iOS app, run `expo build:ios`
+    \- This will kick off a build in the expo account that manages the iOS app
 
-For deploying the iOS app to the App Store, check out these docs to make it happen (since this is not implemented yet :) ):
-
--   <https://docs.expo.io/workflow/publishing/>
--   <https://docs.expo.io/distribution/introduction/>
+Deploying to the iOS App Store _is a big fat pain_. The rough outline/steps are:
+1. Download app bundle file (.ipa) from Expo
+2. Upload to App Store Connect, via Transporter app.
+3. Submit the app for review, over and over again until accepted (there will be feedback why it was rejected, if so)
 
 # To Do
 
 -   Use SVGs instead of PNGs for icons. Solution is going to be pretty involved
--   Customize TailwindCSS to use designer choices
