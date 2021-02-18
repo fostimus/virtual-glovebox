@@ -1,14 +1,19 @@
 # virtual-glovebox
 
+## Run Development Version
+
+1.  Download ["Expo Go"](https://apps.apple.com/us/app/expo-go/id982107779) from the App Store
+2.  Click this link: <https://expo.io/@fostimus/virtual-glovebox>
+
 ## Run Locally
 
 Clone this repository. Once inside `virtual-glovebox`:
-1. Run `yarn`
-2. To run the web app, run `yarn next dev`
-3. To run iOS app on your iPhone, do the following:
-    1. Download "Expo Go" from App Store
-    2. Run `yarn start`
-    3. In the browser tab that opens, scan the QR code from your iPhone
+1\. Run `yarn`
+2\. To run the web app, run `yarn next dev`
+3\. To run iOS app on your iPhone, do the following:
+    1\. Download "Expo Go" from App Store
+    2\. Run `yarn start`
+    3\. In the browser tab that opens, scan the QR code from your iPhone
 
 ## Front End
 
