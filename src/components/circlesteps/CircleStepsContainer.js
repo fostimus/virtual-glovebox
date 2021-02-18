@@ -1,5 +1,5 @@
 import React from "react";
-import { AppView, AppText } from "base";
+import { AppView, AppText, HorizontalLine } from "base";
 import CircleStep from "./CircleStep";
 import tailwind from "tailwind";
 // weird/interesting to solution from React to use keyed fragments
@@ -12,9 +12,7 @@ export default function CircleStepsContainer({ steps, filledIndex }) {
         createFragment({
           left: <CircleStep step={step} filled={index === filledIndex} />,
           right: index !== steps.length - 1 && (
-            <AppView style={tailwind("flex h-full justify-center")}>
-              <AppView style={tailwind("h-1 w-10 bg-vgb-secondary")} />
-            </AppView>
+            <HorizontalLine style={tailwind("w-10 bg-vgb-secondary")} />
           )
         })
       )}
