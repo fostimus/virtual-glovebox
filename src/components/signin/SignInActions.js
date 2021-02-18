@@ -7,7 +7,8 @@ import SignInButton from "./SignInButton";
 import SignInField from "./SignInField";
 import SignInThirdParty from "./SignInThirdParty";
 import { useNavigation } from "@react-navigation/native";
-import { firebase } from "../../../pages/_app.js";
+
+import { userExists } from "./authenticate";
 
 export default function SignInActions({ options }) {
   const [email, setEmail] = useState("");
@@ -18,6 +19,14 @@ export default function SignInActions({ options }) {
 
   const navigation = useNavigation();
 
+  const nextPage = async email => {
+    if (await userExists(email)) {
+      navigation.navigate("Log In Screen");
+    } else {
+      navigation.navigate("Sign Up Screen");
+    }
+  };
+
   return (
     <AppView style={tailwind("flex items-center w-4/6")}>
       <SignInField placeholder="Email" setValue={setEmail} />
@@ -25,7 +34,7 @@ export default function SignInActions({ options }) {
         text="Continue"
         large
         disabled={email === "" /* TODO: validate email */}
-        action={() => navigation.navigate("Sign Up Screen")}
+        action={() => nextPage(email)}
       />
       <SignInThirdParty options={options} />
     </AppView>

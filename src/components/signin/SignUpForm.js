@@ -16,6 +16,9 @@ export default function SignUpForm({ route }) {
   const [name, setName] = useState("");
   const [isChecked, setChecked] = useState(false);
 
+  const buttonDisabled =
+    email === "" || password === "" || name === "" || !isChecked;
+
   const highlightedStyles = tailwind("text-blue-500");
 
   const checkBoxText = (
@@ -67,7 +70,7 @@ export default function SignUpForm({ route }) {
         containerStyle={tailwind("bg-transparent border-transparent w-60")}
         onPress={() => setChecked(!isChecked)}
       />
-      <AppButton large bold text="Create Account" />
+      <AppButton disabled={buttonDisabled} large bold text="Create Account" />
     </AppView>
   );
 }

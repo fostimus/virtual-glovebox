@@ -1,3 +1,5 @@
+import { firebase } from "../../../pages/_app.js";
+
 const authenticate = () => {
   firebase
     .auth()
@@ -41,4 +43,13 @@ const authenticate = () => {
     });
 };
 
-export default authenticate;
+const userExists = async email => {
+  console.log(email);
+  const result = await firebase.auth().fetchSignInMethodsForEmail(email);
+
+  console.log(result);
+
+  return result.length >= 1;
+};
+
+export { authenticate, userExists };
