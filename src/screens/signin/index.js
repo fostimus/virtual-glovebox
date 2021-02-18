@@ -1,4 +1,5 @@
 import LandingScreen from "./LandingScreen";
 import SignUpScreen from "./SignUpScreen";
+import LoginScreen from "./LoginScreen";
 
-export { LandingScreen, SignUpScreen };
+export { LandingScreen, SignUpScreen, LoginScreen };

@@ -19,9 +19,9 @@ export default function SignInActions({ options }) {
 
   const nextPage = async email => {
     if (await userExists(email)) {
-      navigation.navigate("Log In Screen");
+      navigation.navigate("Log In Screen", { email: email });
     } else {
-      navigation.navigate("Sign Up Screen");
+      navigation.navigate("Sign Up Screen", { email: email });
     }
   };
 

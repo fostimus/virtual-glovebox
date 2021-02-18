@@ -7,11 +7,8 @@ import { CheckBox } from "react-native-elements";
 
 import tailwind from "tailwind";
 
-export default function SignUpForm({ route }) {
-  // note: ?. syntax is called "optional chaining". it allows you to check for field deep within an object, without having to worry about null/undefined along the way
-  const [email, setEmail] = useState(
-    route?.params?.email ? route.params.email : ""
-  );
+export default function SignUpForm({ inputEmail }) {
+  const [email, setEmail] = useState(inputEmail ? inputEmail : "");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [isChecked, setChecked] = useState(false);
