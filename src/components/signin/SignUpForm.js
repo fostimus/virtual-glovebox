@@ -4,10 +4,13 @@ import { AppButton } from "base/buttons";
 import { FlatList } from "react-native";
 import SignInField from "./SignInField";
 import { CheckBox } from "react-native-elements";
-
+import { signUp } from "./authenticate";
 import tailwind from "tailwind";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SignUpForm({ inputEmail }) {
+  const navigation = useNavigation();
+
   const [email, setEmail] = useState(inputEmail ? inputEmail : "");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -67,7 +70,15 @@ export default function SignUpForm({ inputEmail }) {
         containerStyle={tailwind("bg-transparent border-transparent w-60")}
         onPress={() => setChecked(!isChecked)}
       />
-      <AppButton disabled={buttonDisabled} large bold text="Create Account" />
+      <AppButton
+        disabled={buttonDisabled}
+        large
+        bold
+        text="Create Account"
+        action={() =>
+          signUp(email, password, () => navigation.navigate("Home"))
+        }
+      />
     </AppView>
   );
 }
