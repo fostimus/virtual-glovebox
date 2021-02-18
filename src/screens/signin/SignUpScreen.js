@@ -7,6 +7,7 @@ export default function SignUpScreen() {
   return (
     <Screen>
       <AppTitle>Sign Up</AppTitle>
+      <SignUpForm />
     </Screen>
   );
 }
