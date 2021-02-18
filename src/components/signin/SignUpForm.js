@@ -3,6 +3,8 @@ import { AppView, AppText } from "base";
 import { AppButton } from "base/buttons";
 import { FlatList } from "react-native";
 import SignInField from "./SignInField";
+import { CheckBox } from "react-native-elements";
+
 import tailwind from "tailwind";
 
 export default function SignUpForm({ route }) {
@@ -12,6 +14,22 @@ export default function SignUpForm({ route }) {
   );
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [isChecked, setChecked] = useState(false);
+
+  const highlightedStyles = tailwind("text-blue-500");
+
+  const checkBoxText = (
+    <AppText bold style={tailwind("ml-4 text-gray-500")}>
+      I agree to{" "}
+      <AppText bold style={highlightedStyles}>
+        Virtual Glovebox's Privacy Policy
+      </AppText>{" "}
+      and{" "}
+      <AppText bold style={highlightedStyles}>
+        Terms of Service
+      </AppText>
+    </AppText>
+  );
 
   return (
     <AppView style={tailwind("flex items-center")}>
@@ -22,7 +40,7 @@ export default function SignUpForm({ route }) {
         value={password}
         setValue={setPassword}
       />
-      <AppView style={tailwind("h-24 self-start")}>
+      <AppView style={tailwind("h-24 self-start ml-4")}>
         <AppText bold style={tailwind("text-gray-500")}>
           Password must contain:
         </AppText>
@@ -43,6 +61,12 @@ export default function SignUpForm({ route }) {
         />
       </AppView>
 
+      <CheckBox
+        title={checkBoxText}
+        checked={isChecked}
+        containerStyle={tailwind("bg-transparent border-transparent w-60")}
+        onPress={() => setChecked(!isChecked)}
+      />
       <AppButton large bold text="Create Account" />
     </AppView>
   );
