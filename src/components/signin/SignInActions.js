@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { TextInput, Image } from "react-native";
-import { AppView, AppText, HorizontalLine } from "base";
+import { AppView } from "base";
 import { AppButton } from "base/buttons";
 import tailwind from "tailwind-rn";
-import SignInButton from "./SignInButton";
 import SignInField from "./SignInField";
 import SignInThirdParty from "./SignInThirdParty";
 import { useNavigation } from "@react-navigation/native";
@@ -40,11 +38,3 @@ export default function SignInActions({ options }) {
     </AppView>
   );
 }
-
-/**
- * <SignInField
-   key={placeholder}
-   placeholder={placeholder}
-   setFormData={setFormData}
- />
- */
