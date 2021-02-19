@@ -3,11 +3,10 @@ import Screen from "src/screens/Screen.js";
 import { AppTitle, AppButton, AppView, AppText } from "base";
 import { useNavigation } from "@react-navigation/native";
 import { AppCard } from "base/cards";
-import { TouchableOpacity, Image, TextInput, StyleSheet } from "react-native";
+import { TouchableOpacity, Image, TextInput, StyleSheet, View, Button, Platform } from "react-native";
 import tailwind from "tailwind";
 import NavBar from "src/components/navigation/NavBar/NavBar.js"
-import { AddService } from "src/screens/AddService/AddService.js"
-
+import DateTimePicker from '@react-native-community/datetimepicker';
 // // extract form into component under base
 
 export default function Maintenance() {
@@ -19,13 +18,33 @@ export default function Maintenance() {
         imageOptions: null,
     });
     const [Vehicle, setVehicle] = useState("");
-    const [Date, setDate] = useState("");
     const [Odometer, setOdometer] = useState("");
     const [vin, setVin] = useState("");
+    const [date, setDate] = useState(new Date(1598051730000));
+    const [mode, setMode] = useState('date');
+    const [show, setShow] = useState(false);
 
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+    };
 
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
+
+    // //Rows to map over for the form
     const formRows = [];
-
     const firstRow = [
         {
             name: "Vehicle",
@@ -68,8 +87,23 @@ export default function Maintenance() {
         <Screen>
             <AppTitle>Maintenance</AppTitle>
             <ServiceButton text="Add New Service" />
-            <AppCard>
-            </AppCard>
+            <View>
+                <View>
+                    <Button onPress={showDatepicker} title="Show date picker!" />
+                </View>
+                <View>
+                    <Button onPress={showTimepicker} title="Show time picker!" />
+                </View>
+                {show && (
+                    <DateTimePicker
+                        value={date}
+                        mode={mode}
+                        is24Hour={true}
+                        display="default"
+                        onChange={onChange}
+                    />
+                )}
+            </View>
             <NavBar></NavBar>
         </Screen>
     );
