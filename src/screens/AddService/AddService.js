@@ -1,75 +1,83 @@
 import React, { useState } from "react";
-import { AppView, AppText, AppTitle } from "base";
-import { AppButton } from "base/buttons";
-import tailwind from "tailwind";
-import { useNavigation } from "@react-navigation/native";
+import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
-export default function AddService({ title }) {
+const AddService = () => {
+    const [modalVisible, setModalVisible] = useState(false);
     return (
-        <AppView>
-            <Action title={title} />
-        </AppView>
-    )
-}
-function Action({ title }) {
-    const navigation = useNavigation();
-
-    const [question, setQuestion] = useState(
-        "Do you have your vehicle's registration card?"
+        <View style={styles.centeredView}>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={modalVisible}
+                onRequestClose={() => {
+                    Alert.alert("Modal has been closed.");
+                    setModalVisible(!modalVisible);
+                }}
+            >
+                <View style={styles.centeredView}>
+                    <View style={styles.modalView}>
+                        <Text style={styles.modalText}>Hello World!</Text>
+                        <Pressable
+                            style={[styles.button, styles.buttonClose]}
+                            onPress={() => setModalVisible(!modalVisible)}
+                        >
+                            <Text style={styles.textStyle}>Hide Modal</Text>
+                        </Pressable>
+                    </View>
+                </View>
+            </Modal>
+            <Pressable
+                style={[styles.button, styles.buttonOpen]}
+                onPress={() => setModalVisible(true)}
+            >
+                <Text style={styles.textStyle}>Show Modal</Text>
+            </Pressable>
+        </View>
     );
-
-    const [btn1, setBtn1] = useState({
-        small: true,
-        text: "Yes",
-        image: null,
-        imageOptions: null,
-        action: setNotif
-    });
-
-    const [btn2, setBtn2] = useState({
-        small: true,
-        text: "No",
-        image: null,
-        imageOptions: null,
-        action: {}
-    });
-    function setNotif() {
-        setQuestion("How do you want to input your service info?");
-        setBtn1({
-            small: false,
-            text: "Scan",
-            image: camera,
-            imageOptions: { imageLeft: true },
-            action: () => { } // this triggers camera scan
-        });
-        setBtn2({
-            small: false,
-            text: "Input Manually",
-            image: "",
-            action: () => navigation.navigate("Add Service", { title: title })
-        });
-    }
-
-    return (
-        <>
-            <AppText style={tailwind("text-xl w-60 text-center")}>
-            </AppText>
-            <AppView>
-                <AppButton
-                    small={btn1.small}
-                    text={btn1.text}
-                    action={btn1.action}
-                    image={btn1.image}
-                    imageOptions={btn1.imageOptions}
-                />
-                <AppButton
-                    small={btn2.small}
-                    text={btn2.text}
-                    image={btn2.image}
-                    action={btn2.action}
-                    imageOptions={btn2.imageOptions}
-                />
-            </AppView>
-        </>
-    )
 };
+
+const styles = StyleSheet.create({
+    centeredView: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 22
+    },
+    modalView: {
+        margin: 20,
+        backgroundColor: "white",
+        borderRadius: 20,
+        padding: 35,
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2
+    },
+    buttonOpen: {
+        backgroundColor: "#F194FF",
+    },
+    buttonClose: {
+        backgroundColor: "#2196F3",
+    },
+    textStyle: {
+        color: "white",
+        fontWeight: "bold",
+        textAlign: "center"
+    },
+    modalText: {
+        marginBottom: 15,
+        textAlign: "center"
+    }
+});
+
+export default AddService;

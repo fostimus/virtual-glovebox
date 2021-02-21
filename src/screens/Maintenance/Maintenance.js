@@ -1,22 +1,16 @@
 import React, { useState } from "react";
 import Screen from "src/screens/Screen.js";
-import { AppTitle, AppButton, AppView, AppText } from "base";
+import { AppTitle, AppButton, AppView, AppText, AppCard } from "base";
 import { useNavigation } from "@react-navigation/native";
-import { AppCard } from "base/cards";
-import { TouchableOpacity, Image, TextInput, StyleSheet, View, Button, Platform } from "react-native";
+import { TouchableOpacity, Image, TextInput, StyleSheet, View, Button, Platform, Pressable, Text } from "react-native";
 import tailwind from "tailwind";
 import NavBar from "src/components/navigation/NavBar/NavBar.js"
 import DateTimePicker from '@react-native-community/datetimepicker';
+import DropDownPicker from "react-native-dropdown-picker";
 // // extract form into component under base
 
-export default function Maintenance() {
+export default function Maintenance({ style, title, rows, }) {
     const navigation = useNavigation()
-    const [btn1, setBtn1] = useState({
-        large: true,
-        text: "Add New Service",
-        image: null,
-        imageOptions: null,
-    });
     const [Vehicle, setVehicle] = useState("");
     const [Odometer, setOdometer] = useState("");
     const [vin, setVin] = useState("");
@@ -38,11 +32,6 @@ export default function Maintenance() {
     const showDatepicker = () => {
         showMode('date');
     };
-
-    const showTimepicker = () => {
-        showMode('time');
-    };
-
     // //Rows to map over for the form
     const formRows = [];
     const firstRow = [
@@ -87,27 +76,73 @@ export default function Maintenance() {
         <Screen>
             <AppTitle>Maintenance</AppTitle>
             <ServiceButton text="Add New Service" />
-            <View>
+            <View style={{
+                ...tailwind(
+                    "flex items-center justify-center w-11/12 rounded-md bg-white"
+                ),
+                ...style
+            }}>
+                <AppTitle>Downtown Garage</AppTitle>
                 <View>
-                    <Button onPress={showDatepicker} title="Show date picker!" />
+                    <Button onPress={showDatepicker} title="Service Date" />
+                    {show && (
+                        <DateTimePicker
+                            value={date}
+                            mode={mode}
+                            is24Hour={true}
+                            display="default"
+                            onChange={onChange}
+                        />
+                    )}
                 </View>
                 <View>
-                    <Button onPress={showTimepicker} title="Show time picker!" />
+                    <FormRow>Vehicle</FormRow>
+                    <TextInput>Odometer</TextInput>
+                    <TextInput>Services Performed</TextInput>
                 </View>
-                {show && (
-                    <DateTimePicker
-                        value={date}
-                        mode={mode}
-                        is24Hour={true}
-                        display="default"
-                        onChange={onChange}
-                    />
-                )}
             </View>
             <NavBar></NavBar>
         </Screen>
     );
 }
+
+function FormRow({
+    small,
+    large,
+    full,
+    name,
+    type,
+    options,
+    children,
+    setValue
+}) {
+    let width = "w-36";
+    if (small) width = "w-20";
+    if (large) width = "w-52";
+    if (full) width = "w-full";
+    <AppView style={tailwind("w-full")}>
+        <TextInput
+            onChangeText={text => setValue(text)}
+            style={tailwind(
+                width +
+                " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg"
+            )}
+        />
+    </AppView>
+    return (
+        <AppView style={tailwind(width)}>
+            <TextInput>
+                <AppText>
+                    {name}: <AppText style={tailwind("text-red-500")}>*</AppText>
+                </AppText>
+                {children}
+            </TextInput>
+        </AppView>
+    );
+}
+
+
+
 
 function ServiceButton({
     text,
