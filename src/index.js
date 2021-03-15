@@ -9,8 +9,7 @@ import {
   HomeScreen,
   QuickId,
   NewVehicleScreen,
-  NewVehicleFormScreen,
-  Maintenance
+  NewVehicleFormScreen
 } from "screens";
 import tailwind from "tailwind";
 
@@ -60,11 +59,6 @@ function App() {
           name="Quick ID"
           options={headerOptions}
           component={QuickId}
-        />
-        <Stack.Screen
-          name="Maintenance"
-          options={headerOptions}
-          component={Maintenance}
         />
       </Stack.Navigator>
     </NavigationContainer>
