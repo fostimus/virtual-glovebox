@@ -5,7 +5,7 @@ import { FlatList } from "react-native";
 import SignInField from "./SignInField";
 import { CheckBox } from "react-native-elements";
 import { signUp } from "./authenticate";
-import { validatePassword } from "./validation";
+import { validatePassword, validateEmail } from "./validation";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
@@ -20,13 +20,13 @@ export default function SignUpForm({ inputEmail }) {
     password: false
   });
 
-  // const [emailErr]
+  const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [name, setName] = useState("");
   const [isChecked, setChecked] = useState(false);
 
   const buttonDisabled =
-    email === "" || password === "" || name === "" || !isChecked;
+    !validation.email || !validation.password || name === "" || !isChecked;
 
   const highlightedStyles = tailwind("text-blue-500");
 
@@ -35,9 +35,24 @@ export default function SignUpForm({ inputEmail }) {
 
     if (pwValidation.success) {
       setValidation({ email, password: true });
+      setPasswordError("");
     } else {
+      setValidation({ email, password: false });
       setPasswordError(pwValidation.error);
       console.log(pwValidation.error);
+    }
+  }
+
+  function validateEm() {
+    const emailValidation = validateEmail(email);
+
+    if (emailValidation.success) {
+      setValidation({ email: true, password });
+      setEmailError("");
+    } else {
+      setValidation({ email: false, password });
+      setEmailError(emailValidation.error);
+      console.log(emailValidation.error);
     }
   }
 
@@ -56,7 +71,13 @@ export default function SignUpForm({ inputEmail }) {
 
   return (
     <AppView style={tailwind("flex items-center")}>
-      <SignInField placeholder="Email" value={email} setValue={setEmail} />
+      <SignInField
+        placeholder="Email"
+        value={email}
+        setValue={setEmail}
+        validate={validateEm}
+        error={emailError}
+      />
       <SignInField placeholder="Name" value={name} setValue={setName} />
       <SignInField
         placeholder="Password"
