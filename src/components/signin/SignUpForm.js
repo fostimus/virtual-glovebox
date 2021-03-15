@@ -5,6 +5,7 @@ import { FlatList } from "react-native";
 import SignInField from "./SignInField";
 import { CheckBox } from "react-native-elements";
 import { signUp } from "./authenticate";
+import { validatePassword } from "./validation";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,6 +14,14 @@ export default function SignUpForm({ inputEmail }) {
 
   const [email, setEmail] = useState(inputEmail ? inputEmail : "");
   const [password, setPassword] = useState("");
+
+  const [validation, setValidation] = useState({
+    email: false,
+    password: false
+  });
+
+  // const [emailErr]
+  const [passwordError, setPasswordError] = useState("");
   const [name, setName] = useState("");
   const [isChecked, setChecked] = useState(false);
 
@@ -20,6 +29,17 @@ export default function SignUpForm({ inputEmail }) {
     email === "" || password === "" || name === "" || !isChecked;
 
   const highlightedStyles = tailwind("text-blue-500");
+
+  function validatePw() {
+    const pwValidation = validatePassword(password);
+
+    if (pwValidation.success) {
+      setValidation({ email, password: true });
+    } else {
+      setPasswordError(pwValidation.error);
+      console.log(pwValidation.error);
+    }
+  }
 
   const checkBoxText = (
     <AppText bold style={tailwind("ml-4 text-gray-500")}>
@@ -42,6 +62,8 @@ export default function SignUpForm({ inputEmail }) {
         placeholder="Password"
         value={password}
         setValue={setPassword}
+        validate={validatePw}
+        error={passwordError}
       />
       <AppView style={tailwind("h-24 self-start ml-4")}>
         <AppText bold style={tailwind("text-gray-500")}>
@@ -75,9 +97,7 @@ export default function SignUpForm({ inputEmail }) {
         large
         bold
         text="Create Account"
-        action={() =>
-          signUp(email, password, () => navigation.navigate("Home"))
-        }
+        action={() => validateAndSignUp(email, password)}
       />
     </AppView>
   );
