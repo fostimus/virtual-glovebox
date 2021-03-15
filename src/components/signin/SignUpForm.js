@@ -5,6 +5,7 @@ import { FlatList } from "react-native";
 import SignInField from "./SignInField";
 import { CheckBox } from "react-native-elements";
 import { signUp } from "./authenticate";
+import { validatePassword, validateEmail } from "./validation";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
@@ -13,13 +14,47 @@ export default function SignUpForm({ inputEmail }) {
 
   const [email, setEmail] = useState(inputEmail ? inputEmail : "");
   const [password, setPassword] = useState("");
+
+  const [validation, setValidation] = useState({
+    email: false,
+    password: false
+  });
+
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [name, setName] = useState("");
   const [isChecked, setChecked] = useState(false);
 
   const buttonDisabled =
-    email === "" || password === "" || name === "" || !isChecked;
+    !validation.email || !validation.password || name === "" || !isChecked;
 
   const highlightedStyles = tailwind("text-blue-500");
+
+  function validatePw() {
+    const pwValidation = validatePassword(password);
+
+    if (pwValidation.success) {
+      setValidation({ email, password: true });
+      setPasswordError("");
+    } else {
+      setValidation({ email, password: false });
+      setPasswordError(pwValidation.error);
+      console.log(pwValidation.error);
+    }
+  }
+
+  function validateEm() {
+    const emailValidation = validateEmail(email);
+
+    if (emailValidation.success) {
+      setValidation({ email: true, password });
+      setEmailError("");
+    } else {
+      setValidation({ email: false, password });
+      setEmailError(emailValidation.error);
+      console.log(emailValidation.error);
+    }
+  }
 
   const checkBoxText = (
     <AppText bold style={tailwind("ml-4 text-gray-500")}>
@@ -36,12 +71,20 @@ export default function SignUpForm({ inputEmail }) {
 
   return (
     <AppView style={tailwind("flex items-center")}>
-      <SignInField placeholder="Email" value={email} setValue={setEmail} />
+      <SignInField
+        placeholder="Email"
+        value={email}
+        setValue={setEmail}
+        validate={validateEm}
+        error={emailError}
+      />
       <SignInField placeholder="Name" value={name} setValue={setName} />
       <SignInField
         placeholder="Password"
         value={password}
         setValue={setPassword}
+        validate={validatePw}
+        error={passwordError}
       />
       <AppView style={tailwind("h-24 self-start ml-4")}>
         <AppText bold style={tailwind("text-gray-500")}>
@@ -75,9 +118,7 @@ export default function SignUpForm({ inputEmail }) {
         large
         bold
         text="Create Account"
-        action={() =>
-          signUp(email, password, () => navigation.navigate("Home"))
-        }
+        action={() => validateAndSignUp(email, password)}
       />
     </AppView>
   );
