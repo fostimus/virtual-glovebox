@@ -19,7 +19,7 @@ export default function SignUpForm({ inputEmail }) {
   });
 
   const [validation, setValidation] = useState({
-    email: false,
+    email: inputEmail ? true : false,
     password: false
   });
 
@@ -30,14 +30,14 @@ export default function SignUpForm({ inputEmail }) {
   const [isChecked, setChecked] = useState(false);
 
   function validateField(field) {
-    const validation = validate(field, values[field]);
+    const regexValidation = validate(field, values[field]);
 
-    if (validation.success) {
+    if (regexValidation.success) {
       setValidation({ ...validation, [field]: true });
       setError({ ...error, [field]: "" });
     } else {
       setValidation({ ...validation, [field]: false });
-      setError({ ...error, [field]: validation.error });
+      setError({ ...error, [field]: regexValidation.error });
       console.log(validation.error);
     }
   }
