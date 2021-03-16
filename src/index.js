@@ -1,5 +1,5 @@
 import React from "react";
-
+import { db } from './firebase'
 import { registerRootComponent } from "expo";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
