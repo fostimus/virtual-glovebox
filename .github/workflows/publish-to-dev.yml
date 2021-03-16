@@ -29,4 +29,4 @@ jobs:
           # caches expo for next job run
           expo-cache: true
       - run: yarn install
-      - run: expo publish
+      - run: expo build:ios
