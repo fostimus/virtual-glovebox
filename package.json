@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "build": "next build"
+    "build": "next build",
+    "test": "echo \"replace me with test command\""
   },
   "dependencies": {
     "@expo-google-fonts/roboto": "^0.1.0",
