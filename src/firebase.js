@@ -23,21 +23,3 @@ db.collection('registration info').doc('cars').set({
 }).catch((error) => {
     console.log('Error writing document: ', error)
 })
-
-// reads all documents in a collection from fireStore
-// db.collection('users')
-//     .get()
-//     .then(querySnapshot => {
-//         querySnapshot.forEach(doc => {
-//             console.log(doc);
-//             console.log(`${doc.id} => ${Object.entries(doc.data())}`);
-//         });
-//     });
-
-
-// delete a document(the doc has to be very specific towards ID)
-// db.collection('users').doc('MRNp0RmkAUrHAcIzDivQ').delete().then(() => {
-//     console.log('Document successfully deleted!')
-// }).catch((error) => {
-//     console.log('Error removing document: ', error)
-// })
