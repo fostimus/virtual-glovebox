@@ -10,7 +10,7 @@ export default function LoginScreen({ route }) {
 
   return (
     <Screen>
-      <AppTitle>Log in</AppTitle>
+      <AppTitle>Log in; testing cache</AppTitle>
       <LoginForm inputEmail={route?.params?.email} />
       <SignInThirdParty options={thirdPartyOptions} />
     </Screen>
