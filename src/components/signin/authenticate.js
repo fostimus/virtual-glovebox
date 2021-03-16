@@ -16,16 +16,16 @@ const signUp = (email, password, successCallback, failCallback) => {
     .catch(error => {
       let userFriendlyError;
 
-      if (errorCode === "auth/invalid-email") {
+      if (error.code === "auth/invalid-email") {
         userFriendlyError = "Not a valid email.";
       }
 
-      if (errorCode === "auth/weak-password") {
+      if (error.code === "auth/weak-password") {
         userFriendlyError = "Password too short.";
       }
-      console.log(error.code, error.message);
+      console.warn(error.code, error.message);
 
-      // TODO: use failCallback here to do something with userFriendlyError
+      failCallback(userFriendlyError);
     });
 };
 
@@ -38,25 +38,29 @@ const logIn = (email, password, successCallback, failCallback) => {
     })
     .catch(error => {
       let userFriendlyError;
-      if (errorCode === "auth/wrong-password") {
-        userFriendlyError = "Invalid password.";
+      if (error.code === "auth/wrong-password") {
+        userFriendlyError = "Wrong password. Try again.";
       }
 
-      if (errorCode === "auth/internal-error") {
+      if (error.code === "auth/internal-error") {
         userFriendlyError = "Internal error.";
       }
 
-      if (errorCode === "auth/weak-password") {
+      if (error.code === "auth/weak-password") {
         userFriendlyError = "Password too short.";
       }
 
-      if (errorCode === "auth/invalid-email") {
+      if (error.code === "auth/invalid-email") {
         userFriendlyError = "Not a valid email.";
       }
 
-      console.log(error.code, error.message);
+      if (error.code === "auth/too-many-requests") {
+        userFriendlyError = error.message;
+      }
 
-      // TODO: use failCallback here to do something with userFriendlyError
+      console.warn(error.code, error.message);
+
+      failCallback(userFriendlyError);
     });
 };
 

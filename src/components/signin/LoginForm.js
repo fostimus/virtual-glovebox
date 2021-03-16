@@ -62,8 +62,11 @@ export default function LoginForm({ inputEmail }) {
         bold
         text="Log In"
         action={() =>
-          logIn(values.email, values.password, () =>
-            navigation.navigate("Home")
+          logIn(
+            values.email,
+            values.password,
+            () => navigation.navigate("Home"),
+            text => setError({ ...error, password: text })
           )
         }
       />

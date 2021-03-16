@@ -118,8 +118,11 @@ export default function SignUpForm({ inputEmail }) {
         bold
         text="Create Account"
         action={() =>
-          signUp(values.email, values.password, () =>
-            navigation.navigate("Home")
+          signUp(
+            values.email,
+            values.password,
+            () => navigation.navigate("Home"),
+            text => setError({ ...error, password: text })
           )
         }
       />
