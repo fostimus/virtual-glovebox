@@ -5,54 +5,42 @@ import { FlatList } from "react-native";
 import SignInField from "./SignInField";
 import { CheckBox } from "react-native-elements";
 import { signUp } from "./authenticate";
-import { validatePassword, validateEmail } from "./validation";
+import validate from "./validation";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
 export default function SignUpForm({ inputEmail }) {
   const navigation = useNavigation();
 
-  const [email, setEmail] = useState(inputEmail ? inputEmail : "");
-  const [password, setPassword] = useState("");
+  const [values, setValues] = useState({
+    email: inputEmail ? inputEmail : "",
+    password: "",
+    name: ""
+  });
 
   const [validation, setValidation] = useState({
     email: false,
     password: false
   });
 
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [name, setName] = useState("");
+  const [error, setError] = useState({
+    email: "",
+    password: ""
+  });
   const [isChecked, setChecked] = useState(false);
-
-  const buttonDisabled =
-    !validation.email || !validation.password || name === "" || !isChecked;
 
   const highlightedStyles = tailwind("text-blue-500");
 
-  function validatePw() {
-    const pwValidation = validatePassword(password);
+  function validateField(field) {
+    const validation = validate(field, values[field]);
 
-    if (pwValidation.success) {
-      setValidation({ email, password: true });
-      setPasswordError("");
+    if (validation.success) {
+      setValidation({ ...validation, [field]: true });
+      setError({ ...error, [field]: "" });
     } else {
-      setValidation({ email, password: false });
-      setPasswordError(pwValidation.error);
-      console.log(pwValidation.error);
-    }
-  }
-
-  function validateEm() {
-    const emailValidation = validateEmail(email);
-
-    if (emailValidation.success) {
-      setValidation({ email: true, password });
-      setEmailError("");
-    } else {
-      setValidation({ email: false, password });
-      setEmailError(emailValidation.error);
-      console.log(emailValidation.error);
+      setValidation({ ...validation, [field]: false });
+      setError({ ...error, [field]: validation.error });
+      console.log(validation.error);
     }
   }
 
@@ -73,18 +61,22 @@ export default function SignUpForm({ inputEmail }) {
     <AppView style={tailwind("flex items-center")}>
       <SignInField
         placeholder="Email"
-        value={email}
-        setValue={setEmail}
-        validate={validateEm}
-        error={emailError}
+        value={values.email}
+        setValue={text => setValues({ ...values, email: text })}
+        validate={() => validateField("email")}
+        error={error.email}
       />
-      <SignInField placeholder="Name" value={name} setValue={setName} />
+      <SignInField
+        placeholder="Name"
+        value={values.name}
+        setValue={text => setValues({ ...values, name: text })}
+      />
       <SignInField
         placeholder="Password"
-        value={password}
-        setValue={setPassword}
-        validate={validatePw}
-        error={passwordError}
+        value={values.password}
+        setValue={text => setValues({ ...values, password: text })}
+        validate={() => validateField("password")}
+        error={error.password}
       />
       <AppView style={tailwind("h-24 self-start ml-4")}>
         <AppText bold style={tailwind("text-gray-500")}>
@@ -114,11 +106,20 @@ export default function SignUpForm({ inputEmail }) {
         onPress={() => setChecked(!isChecked)}
       />
       <AppButton
-        disabled={buttonDisabled}
+        disabled={
+          !validation.email ||
+          !validation.password ||
+          values.name === "" ||
+          !isChecked
+        }
         large
         bold
         text="Create Account"
-        action={() => validateAndSignUp(email, password)}
+        action={() =>
+          signUp(values.email, values.password, () =>
+            navigation.navigate("Home")
+          )
+        }
       />
     </AppView>
   );
