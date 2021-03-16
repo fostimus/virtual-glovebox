@@ -13,7 +13,7 @@ export default function LandingScreen() {
       <AppView style={tailwind("flex items-center")}>
         <Image source={logo} />
         <AppTitle style={tailwind("w-32 text-center")}>
-          Virtual Glovebox
+          Virtual Glovebox BABYEEEEE
         </AppTitle>
       </AppView>
       <AppText style={tailwind("text-center")}>
