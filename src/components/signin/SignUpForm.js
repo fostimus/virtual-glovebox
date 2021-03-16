@@ -29,8 +29,6 @@ export default function SignUpForm({ inputEmail }) {
   });
   const [isChecked, setChecked] = useState(false);
 
-  const highlightedStyles = tailwind("text-blue-500");
-
   function validateField(field) {
     const validation = validate(field, values[field]);
 
@@ -44,18 +42,22 @@ export default function SignUpForm({ inputEmail }) {
     }
   }
 
-  const checkBoxText = (
-    <AppText bold style={tailwind("ml-4 text-gray-500")}>
-      I agree to{" "}
-      <AppText bold style={highlightedStyles}>
-        Virtual Glovebox's Privacy Policy
-      </AppText>{" "}
-      and{" "}
-      <AppText bold style={highlightedStyles}>
-        Terms of Service
+  const checkBoxText = () => {
+    const highlightedStyles = tailwind("text-blue-500");
+
+    return (
+      <AppText bold style={tailwind("ml-4 text-gray-500")}>
+        I agree to{" "}
+        <AppText bold style={highlightedStyles}>
+          Virtual Glovebox's Privacy Policy
+        </AppText>{" "}
+        and{" "}
+        <AppText bold style={highlightedStyles}>
+          Terms of Service
+        </AppText>
       </AppText>
-    </AppText>
-  );
+    );
+  };
 
   return (
     <AppView style={tailwind("flex items-center")}>
@@ -100,7 +102,7 @@ export default function SignUpForm({ inputEmail }) {
       </AppView>
 
       <CheckBox
-        title={checkBoxText}
+        title={checkBoxText()}
         checked={isChecked}
         containerStyle={tailwind("bg-transparent border-transparent w-60")}
         onPress={() => setChecked(!isChecked)}
