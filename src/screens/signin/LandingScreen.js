@@ -17,7 +17,7 @@ export default function LandingScreen() {
         </AppTitle>
       </AppView>
       <AppText style={tailwind("text-center")}>
-        Log in or sign up for free
+        Log in or sign up for free; testing PR build
       </AppText>
 
       <SignInActions options={thirdPartyOptions} />
