@@ -1,10 +1,10 @@
-name: Expo publish on push to main
+name: Expo build/publish on push to production
 on:
   push:
     branches:
-      - main
+      - production
 jobs:
-  publish-to-dev:
+  publish-to-prod:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -29,4 +29,6 @@ jobs:
           # caches expo for next job run
           expo-cache: true
       - run: yarn install
-      - run: expo publish
+      # when we have iOS store connected for real production, use this build command
+      # - run: expo build:ios
+      - run: expo publish --release-channel=production
