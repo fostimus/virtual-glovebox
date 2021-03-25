@@ -1,4 +1,4 @@
-import { firebase } from "../../../pages/_app.js";
+import { firebase } from "../../firebase";
 
 const userExists = async email => {
   const result = await firebase.auth().fetchSignInMethodsForEmail(email);

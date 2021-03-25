@@ -8,12 +8,13 @@
 ## Run Locally
 
 Clone this repository. Once inside `virtual-glovebox`:
-1. Run `yarn`
-2. To run the web app, run `yarn next dev`
-3. To run iOS app on your iPhone, do the following:
-    1. Download "Expo Go" from App Store
-    2. Run `yarn start`
-    3. In the browser tab that opens, scan the QR code from your iPhone
+1\. Run `yarn`
+2\. Ensure you have `API_KEY` environment variable set in a `.env` file
+3\. To run the web app, run `yarn next dev`
+4\. To run iOS app on your iPhone, do the following:
+    1\. Download "Expo Go" from App Store
+    2\. Run `yarn start`
+    3\. In the browser tab that opens, scan the QR code from your iPhone
 
 ## Front End
 
@@ -41,10 +42,14 @@ To deploy to the Expo server (to update the link for the Expo dev link, the same
 ### App Store
 
 Deploying to the iOS App Store _is a big fat pain_. The rough outline/steps are:
-1\. Download app bundle file (.ipa) from Expo
-2\. Upload to App Store Connect, via Transporter app.
-3\. Submit the app for review, over and over again until accepted (there will be feedback why it was rejected, if so)
+1. Download app bundle file (.ipa) from Expo
+2. Upload to App Store Connect, via Transporter app.
+3. Submit the app for review, over and over again until accepted (there will be feedback why it was rejected, if so)
 
 # To Do
 
 -   Use SVGs instead of PNGs for icons. Solution is going to be pretty involved
+
+# Known Issues
+
+-   [react-native-dotenv with Next v9](https://github.com/goatandsheep/react-native-dotenv/issues/136)
