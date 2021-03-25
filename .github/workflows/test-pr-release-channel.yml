@@ -4,11 +4,13 @@ jobs:
   publish-to-pr-release-channel:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Set up environment variables
         run: ./setup_env.sh
         shell: bash
-      - uses: actions/setup-node@v1
+      - name: Initializes Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: Get yarn cache directory path
@@ -21,7 +23,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - uses: expo/expo-github-action@v5
+      - name: Connect to Expo
+        uses: expo/expo-github-action@v5
         with:
           expo-version: 4.x
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
@@ -30,8 +33,10 @@ jobs:
       - run: yarn install
       # this runs the test suite, but we don't have one right now
       - run: yarn test
-      - run: expo publish --release-channel=pr-${{ github.event.number }}
-      - uses: unsplash/comment-on-pr@master
+      - name: Publish app to release channel
+        run: expo publish --release-channel=pr-${{ github.event.number }}
+      - name: Comment on PR with release channel URL
+        uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
