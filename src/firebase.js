@@ -4,8 +4,6 @@ require("firebase/auth");
 // Required for side-effects
 require("firebase/firestore");
 
-console.log("testing: ", API_KEY);
-
 const firebase = require("firebase");
 firebase.initializeApp({
   apiKey: API_KEY,
@@ -27,7 +25,6 @@ db.collection("registration info")
   })
   .then(() => {
     console.log("**Firebase document successfully written!");
-    console.log("testing: ", API_KEY);
   })
   .catch(error => {
     console.log("Error writing document: ", error);
