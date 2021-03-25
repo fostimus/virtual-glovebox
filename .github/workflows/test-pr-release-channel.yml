@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up environment variables
+        run: ./setup_env.sh
+        shell: bash
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
