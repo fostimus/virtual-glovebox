@@ -5,6 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Set up environment variables
+        run: ./setup_env.sh
+        shell: bash
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
@@ -28,8 +31,6 @@ jobs:
       # this runs the test suite, but we don't have one right now
       - run: yarn test
       - run: expo publish --release-channel=pr-${{ github.event.number }}
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
       - uses: unsplash/comment-on-pr@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
