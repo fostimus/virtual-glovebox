@@ -88,7 +88,7 @@ export default function NewVehicleFormScreen({ route }) {
 
   return (
     <Screen loggedIn>
-      {modal ? <Modal /> : <></>}
+      {modal ? <Modal pageTitle="Registration" setModal={setModal} /> : <></>}
       <AppTitle>{route.params.title}</AppTitle>
       <AppForm
         title="Registration Info"

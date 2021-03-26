@@ -16,7 +16,8 @@ export default function SecondaryButton({
 }) {
   return (
     <AppButton
-      style={tailwind("bg-vgb-secondary text-vgb-tertiary")}
+      style={tailwind("bg-vgb-secondary")}
+      textStyles={tailwind("text-vgb-tertiary")}
       text={text}
       imageOptions={imageOptions}
       image={image}

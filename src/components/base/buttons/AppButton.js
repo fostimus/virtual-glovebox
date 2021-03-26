@@ -8,6 +8,7 @@ export default function AppButton({
   image,
   imageOptions,
   style,
+  textStyles = tailwind("text-lg"),
   action,
   small,
   large,
@@ -42,9 +43,6 @@ export default function AppButton({
   if (!imageOptions) {
     imageOptions = {};
   }
-
-  let textStyles = tailwind("text-lg");
-  if (styles["color"]) textStyles = { ...textStyles, color: styles["color"] };
 
   return (
     <TouchableOpacity disabled={disabled} style={styles} onPress={action}>
