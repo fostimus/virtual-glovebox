@@ -7,19 +7,30 @@ import camera from "./camera.png";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Step({ title }) {
+export default function Step({ title, step, question, yesNo, nextPage, children }) {
   return (
     <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
-      <CircleSteps filledIndex={0} />
-      <Action title={title} />
+      <CircleSteps filledIndex={step - 1} />
+      <Action title={title} question={question} nextPage={nextPage} />
     </AppView>
   );
 }
 
-function Action({ title }) {
+//
+/* btn = {
+  small: true,
+  text: "Yes",
+  image: null,
+  imageOptions: null,
+  action: setNotif,
+}
+*/
+function Action({ title, question, nextPage }) {
   const navigation = useNavigation();
 
-  const [question, setQuestion] = useState("Do you have your vehicle's registration card?");
+  const [curQuestion, setQuestion] = useState(
+    question?.text ? question.text : "Do you have your vehicle's registration card?"
+  );
 
   const [btn1, setBtn1] = useState({
     small: true,
@@ -52,7 +63,7 @@ function Action({ title }) {
       small: false,
       text: "Input Manually",
       image: "",
-      action: () => navigation.navigate("New Vehicle Form", { title: title }),
+      action: () => navigation.navigate(nextPage, { title: title }),
     });
 
     // toggle and set timeout for registration notif
@@ -68,7 +79,7 @@ function Action({ title }) {
         <Notification />
       ) : (
         <>
-          <AppText style={tailwind("text-xl w-60 text-center")}>{question}</AppText>
+          <AppText style={tailwind("text-xl w-60 text-center")}>{curQuestion}</AppText>
           <AppView>
             <AppButton
               small={btn1.small}

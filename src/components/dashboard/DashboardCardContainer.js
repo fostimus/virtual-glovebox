@@ -15,11 +15,14 @@ export default function DashboardCardContainer() {
       title: "Add Vehicle",
       image: addCar,
       action: () => {
-        navigation.navigate("Add New Vehicle");
-      }
+        navigation.navigate("Add New Vehicle", {
+          step: 1,
+          question: "Do you have your vehicle's registration card?",
+        });
+      },
     },
     { title: "Add Driver's License", image: addDL },
-    { title: "Take a Tour", image: mapTrifold }
+    { title: "Take a Tour", image: mapTrifold },
   ];
 
   return (

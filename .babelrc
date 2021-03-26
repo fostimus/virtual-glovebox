@@ -16,7 +16,8 @@
           "newvehicle": "./src/components/newvehicle",
           "navigation": "./src/components/navigation",
           "base": "./src/components/base",
-          "tailwind": "./src/tailwind"
+          "tailwind": "./src/tailwind",
+          "store": "./src/store"
         }
       }
     ],
