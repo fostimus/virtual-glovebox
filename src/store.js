@@ -6,6 +6,7 @@ const initialState = {
   newVehicle: {
     step: 1,
     question: "Do you have your vehicle's registration card?",
+    notification: false,
     btn1: {
       small: true,
       text: "Yes",
@@ -32,6 +33,7 @@ const StateProvider = ({ children }) => {
           newVehicle: {
             step: 1,
             question: "How do you want to input your registration info?",
+            notification: true,
             btn1: {
               small: false,
               text: "Scan",
