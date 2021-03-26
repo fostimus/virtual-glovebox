@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Screen from "../Screen";
-import { AppTitle } from "base";
+import { AppTitle, Modal } from "base";
 import AppForm from "base/forms";
 import tailwind from "tailwind";
 
@@ -13,6 +13,7 @@ export default function NewVehicleFormScreen({ route }) {
   const [registeredOwner, setRegisteredOwner] = useState("");
   const [regFromDate, setRegFromDate] = useState("");
   const [regToDate, setRegToDate] = useState("");
+  const [modal, setModal] = useState(false);
 
   const formRows = [];
 
@@ -87,8 +88,13 @@ export default function NewVehicleFormScreen({ route }) {
 
   return (
     <Screen loggedIn>
+      {modal ? <Modal /> : <></>}
       <AppTitle>{route.params.title}</AppTitle>
-      <AppForm title="Registration Info" rows={formRows} />
+      <AppForm
+        title="Registration Info"
+        rows={formRows}
+        cancelAction={() => setModal(true)}
+      />
     </Screen>
   );
 }

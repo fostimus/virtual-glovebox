@@ -40,6 +40,9 @@ module.exports = {
 
         "vgb-notif": "#D7F380"
         // notification color
+      },
+      zIndex: {
+        "-10": "-10"
       }
     }
   },
