@@ -1,5 +1,6 @@
 import React from "react";
-import { AppText, AppView } from "base";
+import AppText from "./AppText";
+import AppView from "./AppView";
 import { AppButton } from "base/buttons";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
