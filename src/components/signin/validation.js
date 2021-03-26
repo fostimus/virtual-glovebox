@@ -1,7 +1,7 @@
 // at least one uppercase, lowercase, number, special character, and at least 8 characters
 const passwordValidation = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}/;
 
-const emailValidation = /^\w+@\w+\.\w+$/;
+const emailValidation = /^\w+@\w*\.\w+$/;
 
 /**
  * functions
