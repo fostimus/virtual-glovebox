@@ -15,10 +15,7 @@ export default function DashboardCardContainer() {
       title: "Add Vehicle",
       image: addCar,
       action: () => {
-        navigation.navigate("Add New Vehicle", {
-          step: 1,
-          question: "Do you have your vehicle's registration card?",
-        });
+        navigation.navigate("Add New Vehicle");
       },
     },
     { title: "Add Driver's License", image: addDL },

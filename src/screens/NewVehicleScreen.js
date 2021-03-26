@@ -1,20 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { AppTitle } from "base";
 import Screen from "./Screen";
 import { Step } from "newvehicle";
-import tailwind from "tailwind";
 import { store } from "store";
 
-import { useNavigation } from "@react-navigation/native";
-
-export default function NewVehicleScreen({ route }) {
-  const navigation = useNavigation();
-
-  const [currentStep, setCurrentStep] = useState(0);
-
+export default function NewVehicleScreen() {
   const title = "Add New Vehicle";
 
-  const { state, dispatch } = useContext(store);
+  const { state } = useContext(store);
 
   return (
     <Screen loggedIn>
