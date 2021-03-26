@@ -122,7 +122,7 @@ export default function SignUpForm({ inputEmail }) {
             values.email,
             values.password,
             () => navigation.navigate("Home"),
-            text => setError({ ...error, password: text })
+            (field, text) => setError({ ...error, [field]: text })
           )
         }
       />
