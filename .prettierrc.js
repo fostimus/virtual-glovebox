@@ -7,6 +7,5 @@ module.exports = {
   jsxBracketSameLine: false,
   arrowParens: "avoid",
   proseWrap: "never",
-  //NOTE: higher print width will allow custom atom-tailwind syntax suggestions. Is the change in formatting worth that benefit?
-  printWidth: 120,
+  printWidth: 110,
 };

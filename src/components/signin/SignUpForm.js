@@ -15,17 +15,17 @@ export default function SignUpForm({ inputEmail }) {
   const [values, setValues] = useState({
     email: inputEmail ? inputEmail : "",
     password: "",
-    name: ""
+    name: "",
   });
 
   const [validation, setValidation] = useState({
     email: inputEmail ? true : false,
-    password: false
+    password: false,
   });
 
   const [error, setError] = useState({
     email: "",
-    password: ""
+    password: "",
   });
   const [isChecked, setChecked] = useState(false);
 
@@ -87,16 +87,9 @@ export default function SignUpForm({ inputEmail }) {
         <FlatList
           style={tailwind("")}
           scrollEnabled={false}
-          data={[
-            { key: "At least 6 characters" },
-            { key: "A number" },
-            { key: "A special character" }
-          ]}
+          data={[{ key: "At least 6 characters" }, { key: "A number" }, { key: "A special character" }]}
           renderItem={({ item }) => (
-            <AppText
-              bold
-              style={tailwind("text-gray-500")}
-            >{`\u2022 ${item.key}`}</AppText>
+            <AppText bold style={tailwind("text-gray-500")}>{`\u2022 ${item.key}`}</AppText>
           )}
         />
       </AppView>
@@ -108,12 +101,7 @@ export default function SignUpForm({ inputEmail }) {
         onPress={() => setChecked(!isChecked)}
       />
       <AppButton
-        disabled={
-          !validation.email ||
-          !validation.password ||
-          values.name === "" ||
-          !isChecked
-        }
+        disabled={!validation.email || !validation.password || values.name === "" || !isChecked}
         large
         bold
         text="Create Account"

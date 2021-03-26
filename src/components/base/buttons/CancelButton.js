@@ -12,13 +12,11 @@ export default function SecondaryButton({
   small,
   large,
   bold,
-  disabled
+  disabled,
 }) {
   return (
     <AppButton
-      style={tailwind(
-        "border-2 border-solid bg-transparent border-vgb-primary"
-      )}
+      style={tailwind("border-2 border-solid bg-transparent border-vgb-primary")}
       textStyles={tailwind("text-vgb-primary")}
       text={text}
       imageOptions={imageOptions}
