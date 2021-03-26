@@ -16,8 +16,6 @@ export default function NewVehicleScreen({ route }) {
 
   const { state, dispatch } = useContext(store);
 
-  // dispatch({ type: "action description" });
-
   return (
     <Screen loggedIn>
       <AppTitle>{title}</AppTitle>
