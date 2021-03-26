@@ -8416,6 +8416,9 @@
 	"z-50": {
 		"zIndex": 50
 	},
+	"-z-10": {
+		"zIndex": -10
+	},
 	"underline": {
 		"textDecorationLine": "underline"
 	},

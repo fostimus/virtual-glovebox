@@ -72,22 +72,22 @@ function FormItem({
       <DropDownPicker
         defaultValue={null}
         placeholder=""
-        containerStyle={tailwind(width + " h-10 my-1")}
-        style={tailwind("bg-white border-gray-400 rounded-lg")}
+        containerStyle={tailwind(width + " h-10 my-1 -z-10")}
+        style={tailwind("bg-white border-gray-400 rounded-lg -z-10")}
         itemStyle={{
           justifyContent: "flex-start"
         }}
-        dropDownStyle={tailwind("absolute z-50 bg-blue-500")}
+        dropDownStyle={tailwind("absolute bg-blue-800")}
         items={options}
         onChangeItem={item => setValue(item.value)}
       />
     ) : (
-      <AppView style={tailwind("w-full")}>
+      <AppView style={tailwind("w-full -z-10")}>
         <TextInput
           onChangeText={text => setValue(text)}
           style={tailwind(
             width +
-              " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg"
+              " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg -z-10"
           )}
         />
       </AppView>

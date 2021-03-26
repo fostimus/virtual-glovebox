@@ -17,8 +17,9 @@ export default function SecondaryButton({
   return (
     <AppButton
       style={tailwind(
-        "border-2 border-solid bg-transparent border-vgb-primary text-vgb-primary"
+        "border-2 border-solid bg-transparent border-vgb-primary"
       )}
+      textStyles={tailwind("text-vgb-primary")}
       text={text}
       imageOptions={imageOptions}
       image={image}
