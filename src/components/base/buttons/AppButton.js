@@ -13,7 +13,7 @@ export default function AppButton({
   small,
   large,
   bold,
-  disabled
+  disabled,
 }) {
   let width = "w-44";
   if (small) width = "w-28";
@@ -25,7 +25,7 @@ export default function AppButton({
         width +
         " p-3 rounded-md my-4 rounded-lg bg-vgb-primary "
     ),
-    ...style
+    ...style,
   };
 
   const disabledStyles = tailwind("bg-gray-400 text-gray-700");
@@ -33,7 +33,7 @@ export default function AppButton({
   if (disabled)
     styles = {
       ...styles,
-      ...disabledStyles
+      ...disabledStyles,
     };
 
   if (small && large) {
@@ -50,9 +50,7 @@ export default function AppButton({
       <AppText bold={bold} style={textStyles}>
         {text}
       </AppText>
-      {imageOptions.imageRight && (
-        <Image source={image} style={imageOptions.style} />
-      )}
+      {imageOptions.imageRight && <Image source={image} style={imageOptions.style} />}
     </TouchableOpacity>
   );
 }

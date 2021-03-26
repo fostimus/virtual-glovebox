@@ -29,11 +29,7 @@ export default function AppForm({ title, rows, cancelAction, acceptAction }) {
         </FormRow>
       ))}
 
-      <AppView
-        style={tailwind(
-          "flex flex-row w-full justify-evenly border-t border-solid border-gray-400"
-        )}
-      >
+      <AppView style={tailwind("flex flex-row w-full justify-evenly border-t border-solid border-gray-400")}>
         <CancelButton small bold text="Cancel" action={cancelAction} />
         <AppButton small bold text="Accept" action={acceptAction} />
       </AppView>
@@ -43,25 +39,12 @@ export default function AppForm({ title, rows, cancelAction, acceptAction }) {
 
 function FormRow({ children }) {
   return (
-    <AppView
-      style={tailwind("w-full flex flex-row justify-between pb-2 pl-4 pr-4")}
-    >
-      {children}
-    </AppView>
+    <AppView style={tailwind("w-full flex flex-row justify-between pb-2 pl-4 pr-4")}>{children}</AppView>
   );
 }
 
 //TODO: split off child and input type checking to own helper function. include "date" as an input type
-function FormItem({
-  small,
-  large,
-  full,
-  name,
-  type,
-  options,
-  children,
-  setValue
-}) {
+function FormItem({ small, large, full, name, type, options, children, setValue }) {
   let width = "w-36";
   if (small) width = "w-20";
   if (large) width = "w-52";
@@ -75,7 +58,7 @@ function FormItem({
         containerStyle={tailwind(width + " h-10 my-1 -z-10")}
         style={tailwind("bg-white border-gray-400 rounded-lg -z-10")}
         itemStyle={{
-          justifyContent: "flex-start"
+          justifyContent: "flex-start",
         }}
         dropDownStyle={tailwind("absolute bg-blue-800")}
         items={options}
@@ -85,10 +68,7 @@ function FormItem({
       <AppView style={tailwind("w-full -z-10")}>
         <TextInput
           onChangeText={text => setValue(text)}
-          style={tailwind(
-            width +
-              " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg -z-10"
-          )}
+          style={tailwind(width + " my-1 bg-white h-10 border border-solid border-gray-400 rounded-lg -z-10")}
         />
       </AppView>
     );

@@ -15,7 +15,7 @@ module.exports = {
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
 
-      "2xl": "1536px"
+      "2xl": "1536px",
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
@@ -38,16 +38,16 @@ module.exports = {
         "vgb-card-border": "#DEE4ED",
         // border for white cards
 
-        "vgb-notif": "#D7F380"
+        "vgb-notif": "#D7F380",
         // notification color
       },
       zIndex: {
-        "-10": "-10"
-      }
-    }
+        "-10": "-10",
+      },
+    },
   },
   variants: {
-    extend: {}
+    extend: {},
   },
-  plugins: []
+  plugins: [],
 };
