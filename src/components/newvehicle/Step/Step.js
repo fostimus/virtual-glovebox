@@ -7,7 +7,7 @@ import camera from "./camera.png";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
 
-export default function FirstStep({ title }) {
+export default function Step({ title }) {
   return (
     <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
       <CircleSteps filledIndex={0} />
@@ -19,16 +19,14 @@ export default function FirstStep({ title }) {
 function Action({ title }) {
   const navigation = useNavigation();
 
-  const [question, setQuestion] = useState(
-    "Do you have your vehicle's registration card?"
-  );
+  const [question, setQuestion] = useState("Do you have your vehicle's registration card?");
 
   const [btn1, setBtn1] = useState({
     small: true,
     text: "Yes",
     image: null,
     imageOptions: null,
-    action: setNotif
+    action: setNotif,
   });
 
   const [btn2, setBtn2] = useState({
@@ -36,7 +34,7 @@ function Action({ title }) {
     text: "No",
     image: null,
     imageOptions: null,
-    action: {}
+    action: {},
   });
 
   const [haveRegistration, setHaveRegistration] = useState(false);
@@ -48,13 +46,13 @@ function Action({ title }) {
       text: "Scan",
       image: camera,
       imageOptions: { imageLeft: true },
-      action: () => {} // this triggers camera scan
+      action: () => {}, // this triggers camera scan
     });
     setBtn2({
       small: false,
       text: "Input Manually",
       image: "",
-      action: () => navigation.navigate("New Vehicle Form", { title: title })
+      action: () => navigation.navigate("New Vehicle Form", { title: title }),
     });
 
     // toggle and set timeout for registration notif
@@ -70,9 +68,7 @@ function Action({ title }) {
         <Notification />
       ) : (
         <>
-          <AppText style={tailwind("text-xl w-60 text-center")}>
-            {question}
-          </AppText>
+          <AppText style={tailwind("text-xl w-60 text-center")}>{question}</AppText>
           <AppView>
             <AppButton
               small={btn1.small}

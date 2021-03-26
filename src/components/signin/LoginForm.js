@@ -12,11 +12,11 @@ export default function LoginForm({ inputEmail }) {
 
   const [values, setValues] = useState({
     email: inputEmail ? inputEmail : "",
-    password: ""
+    password: "",
   });
   const [validation, setValidation] = useState({
     email: inputEmail ? true : false,
-    password: false
+    password: false,
   });
   const [error, setError] = useState({ email: "", password: "" });
 
