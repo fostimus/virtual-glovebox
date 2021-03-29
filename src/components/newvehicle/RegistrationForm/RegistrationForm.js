@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import AppForm from "base/forms";
 import { store } from "screens/newvehicle/store";
+import { useNavigation } from "@react-navigation/native";
 
 export default function RegistrationForm({ setModal }) {
   const [make, setMake] = useState("");
@@ -85,12 +86,19 @@ export default function RegistrationForm({ setModal }) {
 
   const { state, dispatch } = useContext(store);
 
+  const navigation = useNavigation();
+
+  // console.log(state);
+
   return (
     <AppForm
       title="Registration Info"
       rows={formRows}
       cancelAction={() => setModal(true)}
-      acceptAction={() => {}}
+      acceptAction={() => {
+        dispatch({ type: "formAccept" });
+        navigation.push("Add New Vehicle");
+      }}
     />
   );
 }

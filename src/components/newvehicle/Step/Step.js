@@ -5,20 +5,24 @@ import { AppButton } from "base/buttons";
 import Notification from "../Notification";
 import tailwind from "tailwind";
 import { store } from "screens/newvehicle/store";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Step() {
-  const { state } = useContext(store);
+export default function Step({ state }) {
+  const curState = state ? state : useContext(store).state;
 
   return (
     <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
-      <CircleSteps filledIndex={state.step} />
-      <Action />
+      <CircleSteps filledIndex={curState.step} />
+      <Action curState={curState} />
     </AppView>
   );
 }
 
-function Action() {
-  const { state, dispatch } = useContext(store);
+function Action({ curState }) {
+  const navigation = useNavigation();
+
+  const { dispatch } = useContext(store);
+  const state = curState;
 
   const [haveRegistration, setHaveRegistration] = useState(false);
 
@@ -43,9 +47,11 @@ function Action() {
               text={state.btn1.text}
               action={() => {
                 if (state.btn1.action.dispatch) {
-                  dispatch({ type: state.btn1.action.next });
-                } else {
-                  state.btn1.action.next();
+                  dispatch({ type: state.btn1.action.dispatch });
+                }
+
+                if (state.btn1.action.nextPage) {
+                  navigation.navigate(state.btn1.action.nextPage);
                 }
                 noftify();
               }}
@@ -58,9 +64,11 @@ function Action() {
               image={state.btn2.image}
               action={() => {
                 if (state.btn2.action.dispatch) {
-                  dispatch({ type: state.btn2.action.next });
-                } else {
-                  state.btn2.action.next();
+                  dispatch({ type: state.btn2.action.dispatch });
+                }
+
+                if (state.btn2.action.nextPage) {
+                  navigation.navigate(state.btn2.action.nextPage);
                 }
               }}
               imageOptions={state.btn2.imageOptions}
