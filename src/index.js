@@ -1,16 +1,12 @@
 import React from "react";
-import { db } from './firebase'
+import { db } from "./firebase";
 import { registerRootComponent } from "expo";
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { StateProvider } from "./store";
 import { LandingScreen, SignUpScreen, LoginScreen } from "screens/signin";
-import {
-  HomeScreen,
-  QuickId,
-  NewVehicleScreen,
-  NewVehicleFormScreen
-} from "screens";
+import { HomeScreen, QuickId, NewVehicleScreen, NewVehicleFormScreen } from "screens";
 import tailwind from "tailwind";
 
 const Stack = createStackNavigator();
@@ -23,45 +19,19 @@ function App() {
   const headerOptions = { title: "", headerStyle: tailwind("h-24 bg-black") };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Landing Screen"
-          component={LandingScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="Sign Up Screen"
-          component={SignUpScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="Log In Screen"
-          component={LoginScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="Add New Vehicle"
-          component={NewVehicleScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="New Vehicle Form"
-          component={NewVehicleFormScreen}
-          options={headerOptions}
-        />
-        <Stack.Screen
-          name="Quick ID"
-          options={headerOptions}
-          component={QuickId}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <StateProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Landing Screen" component={LandingScreen} options={headerOptions} />
+          <Stack.Screen name="Sign Up Screen" component={SignUpScreen} options={headerOptions} />
+          <Stack.Screen name="Log In Screen" component={LoginScreen} options={headerOptions} />
+          <Stack.Screen name="Home" component={HomeScreen} options={headerOptions} />
+          <Stack.Screen name="Add New Vehicle" component={NewVehicleScreen} options={headerOptions} />
+          <Stack.Screen name="New Vehicle Form" component={NewVehicleFormScreen} options={headerOptions} />
+          <Stack.Screen name="Quick ID" options={headerOptions} component={QuickId} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StateProvider>
   );
 }
 

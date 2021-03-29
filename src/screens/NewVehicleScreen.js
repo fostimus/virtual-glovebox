@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { AppTitle } from "base";
 import Screen from "./Screen";
-import { FirstStep } from "newvehicle";
-import tailwind from "tailwind";
+import { Step } from "newvehicle";
+import { store } from "store";
 
 export default function NewVehicleScreen() {
-  const [currentStep, setCurrentStep] = useState(0);
-
   const title = "Add New Vehicle";
+
+  const { state } = useContext(store);
 
   return (
     <Screen loggedIn>
       <AppTitle>{title}</AppTitle>
-      {currentStep === 0 && <FirstStep title={title} />}
+      <Step title={title} step={state.newVehicle.step} question={state.newVehicle.question} />
     </Screen>
   );
 }

@@ -16,10 +16,10 @@ export default function DashboardCardContainer() {
       image: addCar,
       action: () => {
         navigation.navigate("Add New Vehicle");
-      }
+      },
     },
     { title: "Add Driver's License", image: addDL },
-    { title: "Take a Tour", image: mapTrifold }
+    { title: "Take a Tour", image: mapTrifold },
   ];
 
   return (
