@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { AppTitle } from "base";
-import Screen from "./Screen";
+import Screen from "screens/Screen";
 import { Step } from "newvehicle";
 import camera from "./camera.png";
 import { useNavigation } from "@react-navigation/native";

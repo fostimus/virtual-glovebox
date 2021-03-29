@@ -1,3 +1,4 @@
-import NewVehicleScreen from "./NewVehicleScreen";
+import NewVehicleScreen, { store, StateProvider } from "./NewVehicleScreen";
+import NewVehicleFormScreen from "./NewVehicleFormScreen";
 
-export default NewVehicleScreen;
+export { NewVehicleScreen, NewVehicleFormScreen, store, StateProvider };

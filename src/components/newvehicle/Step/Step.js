@@ -4,7 +4,7 @@ import { AppView, AppText, AppTitle } from "base";
 import { AppButton } from "base/buttons";
 import Notification from "../Notification";
 import tailwind from "tailwind";
-import { store } from "../../../screens/NewVehicleScreen";
+import { store } from "screens/newvehicle";
 
 export default function Step({ title, step, question }) {
   return (
