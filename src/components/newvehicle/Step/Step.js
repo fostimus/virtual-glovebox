@@ -9,8 +9,6 @@ import { store } from "screens/newvehicle/store";
 export default function Step() {
   const { state } = useContext(store);
 
-  console.log(state);
-
   return (
     <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
       <CircleSteps filledIndex={state.step} />

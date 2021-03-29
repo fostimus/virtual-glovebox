@@ -3,8 +3,9 @@ import Screen from "screens/Screen";
 import { AppTitle, Modal } from "base";
 import AppForm from "base/forms";
 import tailwind from "tailwind";
+import { title } from "../store";
 
-export default function NewVehicleFormScreen({ route }) {
+export default function NewVehicleFormScreen() {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
@@ -89,7 +90,7 @@ export default function NewVehicleFormScreen({ route }) {
   return (
     <Screen loggedIn>
       {modal ? <Modal pageTitle="Registration" setModal={setModal} /> : <></>}
-      <AppTitle>{route.params.title}</AppTitle>
+      <AppTitle>{title}</AppTitle>
       <AppForm title="Registration Info" rows={formRows} cancelAction={() => setModal(true)} />
     </Screen>
   );

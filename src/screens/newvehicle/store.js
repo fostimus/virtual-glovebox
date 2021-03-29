@@ -1,7 +1,9 @@
 import React, { createContext, useReducer } from "react";
 import camera from "./camera.png";
 import { useNavigation } from "@react-navigation/native";
-// const navigation = useNavigation();
+
+// entire flow's title
+const title = "Add New Vehicle";
 
 const initialState = {
   step: 1,
@@ -26,6 +28,8 @@ const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
+  const navigation = useNavigation();
+
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "newVehicle notify":
@@ -43,7 +47,10 @@ const StateProvider = ({ children }) => {
             small: false,
             text: "Input Manually",
             image: "",
-            // action: { dispatch: false, next: () => navigation.navigate("New Vehicle Form") },
+            action: {
+              dispatch: false,
+              next: () => navigation.navigate("New Vehicle Form", { title: "Registration Info" }),
+            },
           },
         };
       case "newVehicle notify":
@@ -72,4 +79,4 @@ const StateProvider = ({ children }) => {
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
-export { store, StateProvider };
+export { title, store, StateProvider };
