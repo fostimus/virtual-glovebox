@@ -14,7 +14,7 @@ const initialState = {
     text: "Yes",
     image: null,
     imageOptions: null,
-    action: { dispatch: true, next: "newVehicle notify" },
+    action: { dispatch: true, next: "notify" },
   },
   btn2: {
     small: true,
@@ -32,7 +32,7 @@ const StateProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
-      case "newVehicle notify":
+      case "notify":
         return {
           step: 1,
           question: "How do you want to input your registration info?",
@@ -53,22 +53,22 @@ const StateProvider = ({ children }) => {
             },
           },
         };
-      case "newVehicle notify":
+      case "formAccept":
         return {
-          step: 1,
-          question: "How do you want to input your registration info?",
-          notification: true,
+          step: 2,
+          question: "Do you want to add a nickname for your vehicle?",
+          notification: false,
           btn1: {
             small: false,
-            text: "Scan",
-            image: camera,
-            imageOptions: { imageLeft: true },
+            text: "Add",
+            image: null,
+            imageOptions: null,
           },
           btn2: {
             small: false,
-            text: "Input Manually",
-            image: "",
-            action: "newVehicle manual",
+            text: "Skip",
+            image: null,
+            action: "",
           },
         };
       default:

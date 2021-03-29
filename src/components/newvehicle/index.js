@@ -1,3 +1,4 @@
 import Step from "./Step";
+import RegistrationForm from "./RegistrationForm";
 
-export { Step };
+export { Step, RegistrationForm };
