@@ -35,7 +35,7 @@ const NewVehicle = createStackNavigator();
 function NewVehicleFlow() {
   return (
     <NewVehicleStateProvider>
-      <NewVehicle.Navigator headerShown={false}>
+      <NewVehicle.Navigator headerMode="none">
         <NewVehicle.Screen name="Add New Vehicle" component={NewVehicleScreen} />
         <NewVehicle.Screen name="New Vehicle Form" component={NewVehicleFormScreen} />
       </NewVehicle.Navigator>
