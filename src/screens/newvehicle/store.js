@@ -4,7 +4,7 @@ import camera from "./camera.png";
 // entire flow's title
 const title = "Add New Vehicle";
 
-let initialState = {
+const initialState = {
   step: 1,
   question: "Do you have your vehicle's registration card?",
   notification: false,
@@ -52,7 +52,7 @@ function newVehicleReducer(state, action) {
         },
       };
     case "formAccept":
-      initialState = {
+      return {
         step: 2,
         question: "Do you want to add a nickname for your vehicle?",
         notification: false,
@@ -69,18 +69,14 @@ function newVehicleReducer(state, action) {
           action: "",
         },
       };
-      console.log(initialState);
-      return initialState;
     default:
       throw new Error();
   }
 }
 
-const StateProvider = ({ children }) => {
+const NewVehicleStateProvider = ({ children }) => {
   const memoizedReducer = useCallback(newVehicleReducer, []);
   const [state, dispatch] = useReducer(memoizedReducer, initialState);
-
-  // console.log("state in provider:", state);
 
   const value = useMemo(
     () => ({
@@ -90,9 +86,7 @@ const StateProvider = ({ children }) => {
     [state]
   );
 
-  // console.log("value is:", value);
-
   return <Provider value={value}>{children}</Provider>;
 };
 
-export { title, store, StateProvider };
+export { title, store, NewVehicleStateProvider };

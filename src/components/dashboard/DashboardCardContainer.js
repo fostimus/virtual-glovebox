@@ -15,7 +15,7 @@ export default function DashboardCardContainer() {
       title: "Add Vehicle",
       image: addCar,
       action: () => {
-        navigation.navigate("Add New Vehicle");
+        navigation.navigate("New Vehicle");
       },
     },
     { title: "Add Driver's License", image: addDL },

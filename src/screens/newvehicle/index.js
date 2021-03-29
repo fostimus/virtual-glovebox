@@ -1,4 +1,6 @@
-import NewVehicleScreen, { store, StateProvider } from "./NewVehicleScreen";
+import NewVehicleScreen from "./NewVehicleScreen";
 import NewVehicleFormScreen from "./NewVehicleFormScreen";
 
-export { NewVehicleScreen, NewVehicleFormScreen, store, StateProvider };
+import { NewVehicleStateProvider } from "./store";
+
+export { NewVehicleScreen, NewVehicleFormScreen, NewVehicleStateProvider };
