@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import CircleSteps from "circlesteps";
 import { AppView, AppText, AppTitle } from "base";
 import { AppButton } from "base/buttons";
 import Notification from "../Notification";
 import tailwind from "tailwind";
-import { store } from "screens/newvehicle";
+import { store } from "screens/newvehicle/store";
 
-export default function Step({ title, step, question }) {
+export default function Step() {
+  const { state } = useContext(store);
+
+  console.log(state);
+
   return (
     <AppView style={tailwind("flex items-center h-4/6 justify-around")}>
-      <CircleSteps filledIndex={step - 1} />
-      <Action title={title} question={question} />
+      <CircleSteps filledIndex={state.step} />
+      <Action />
     </AppView>
   );
 }
 
-function Action({ title, question, nextPage }) {
-  console.log(store);
-  // const { state, dispatch } = useContext(store);
+function Action() {
+  const { state, dispatch } = useContext(store);
 
   const [haveRegistration, setHaveRegistration] = useState(false);
 
