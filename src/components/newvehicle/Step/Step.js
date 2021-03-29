@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import CircleSteps from "circlesteps";
 import { AppView, AppText, AppTitle } from "base";
 import { AppButton } from "base/buttons";
 import Notification from "../Notification";
 import tailwind from "tailwind";
-import { useNavigation } from "@react-navigation/native";
-import { store } from "store";
+import { store } from "../../../screens/NewVehicleScreen";
 
 export default function Step({ title, step, question }) {
   return (
@@ -17,9 +16,8 @@ export default function Step({ title, step, question }) {
 }
 
 function Action({ title, question, nextPage }) {
-  const { state, dispatch } = useContext(store);
-
-  const navigation = useNavigation();
+  console.log(store);
+  // const { state, dispatch } = useContext(store);
 
   const [haveRegistration, setHaveRegistration] = useState(false);
 
@@ -37,24 +35,34 @@ function Action({ title, question, nextPage }) {
         <Notification />
       ) : (
         <>
-          <AppText style={tailwind("text-xl w-60 text-center")}>{state.newVehicle.question}</AppText>
+          <AppText style={tailwind("text-xl w-60 text-center")}>{state.question}</AppText>
           <AppView>
             <AppButton
-              small={state.newVehicle.btn1.small}
-              text={state.newVehicle.btn1.text}
+              small={state.btn1.small}
+              text={state.btn1.text}
               action={() => {
-                dispatch({ type: state.newVehicle.btn1.action });
+                if (state.btn1.action.dispatch) {
+                  dispatch({ type: state.btn1.action.next });
+                } else {
+                  state.btn1.action.next();
+                }
                 noftify();
               }}
-              image={state.newVehicle.btn1.image}
-              imageOptions={state.newVehicle.btn1.imageOptions}
+              image={state.btn1.image}
+              imageOptions={state.btn1.imageOptions}
             />
             <AppButton
-              small={state.newVehicle.btn2.small}
-              text={state.newVehicle.btn2.text}
-              image={state.newVehicle.btn2.image}
-              action={state.newVehicle.btn2.action}
-              imageOptions={state.newVehicle.btn2.imageOptions}
+              small={state.btn2.small}
+              text={state.btn2.text}
+              image={state.btn2.image}
+              action={() => {
+                if (state.btn2.action.dispatch) {
+                  dispatch({ type: state.btn2.action.next });
+                } else {
+                  state.btn2.action.next();
+                }
+              }}
+              imageOptions={state.btn2.imageOptions}
             />
           </AppView>
         </>
