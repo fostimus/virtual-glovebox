@@ -122,9 +122,12 @@ function newVehicleReducer(state, action) {
         complete: true,
         btn1: {
           small: false,
-          text: "Scan",
-          image: camera,
-          imageOptions: { imageLeft: true },
+          text: "Go to Dashboard",
+          image: null,
+          imageOptions: null,
+          action: {
+            nextPage: "Home",
+          },
         },
         // potentially make into previous tiny button?
         btn2: null,

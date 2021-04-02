@@ -70,21 +70,23 @@ function Action({ curState }) {
               image={state.btn1.image}
               imageOptions={state.btn1.imageOptions}
             />
-            <AppButton
-              small={state.btn2.small}
-              text={state.btn2.text}
-              image={state.btn2.image}
-              action={() => {
-                if (state.btn2.action.dispatch) {
-                  dispatch({ type: state.btn2.action.dispatch });
-                }
+            {state.btn2 && (
+              <AppButton
+                small={state.btn2.small}
+                text={state.btn2.text}
+                image={state.btn2.image}
+                action={() => {
+                  if (state.btn2.action.dispatch) {
+                    dispatch({ type: state.btn2.action.dispatch });
+                  }
 
-                if (state.btn2.action.nextPage) {
-                  navigation.navigate(state.btn2.action.nextPage);
-                }
-              }}
-              imageOptions={state.btn2.imageOptions}
-            />
+                  if (state.btn2.action.nextPage) {
+                    navigation.navigate(state.btn2.action.nextPage);
+                  }
+                }}
+                imageOptions={state.btn2.imageOptions}
+              />
+            )}
           </AppView>
         </>
       )}
