@@ -6,9 +6,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Set up environment variables
-        run: ./setup_env.sh
-        shell: bash
+      # - name: Set up environment variables
+      #   run: ./setup_env.sh
+      #   shell: bash
       - name: Initializes Node.js
         uses: actions/setup-node@v1
         with:
