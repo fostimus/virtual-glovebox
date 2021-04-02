@@ -6,7 +6,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { LandingScreen, SignUpScreen, LoginScreen } from "screens/signin";
 import { HomeScreen, QuickId } from "screens";
-import { NewVehicleScreen, NewVehicleFormScreen, NewVehicleStateProvider } from "screens/newvehicle";
+import {
+  NewVehicleScreen,
+  NewVehicleFormScreen,
+  NewInsuranceFormScreen,
+  NewVehicleStateProvider,
+} from "screens/newvehicle";
 import tailwind from "tailwind";
 
 const Stack = createStackNavigator();
@@ -38,6 +43,7 @@ function NewVehicleFlow() {
       <NewVehicle.Navigator headerMode="none">
         <NewVehicle.Screen name="Add New Vehicle" component={NewVehicleScreen} />
         <NewVehicle.Screen name="New Vehicle Form" component={NewVehicleFormScreen} />
+        <NewVehicle.Screen name="New Insurance Form" component={NewInsuranceFormScreen} />
       </NewVehicle.Navigator>
     </NewVehicleStateProvider>
   );

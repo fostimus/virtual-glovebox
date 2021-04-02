@@ -7,7 +7,7 @@ const title = "Add New Vehicle";
 const initialState = {
   step: 1,
   question: "Do you have your vehicle's registration card?",
-  notification: false,
+  notification: true,
   input: null,
   btn1: {
     small: true,
@@ -35,7 +35,7 @@ function newVehicleReducer(state, action) {
       return {
         step: 1,
         question: "How do you want to input your registration info?",
-        notification: true,
+        notification: false,
         input: null,
         btn1: {
           small: false,
@@ -92,6 +92,42 @@ function newVehicleReducer(state, action) {
           image: null,
           action: "",
         },
+      };
+    case "takeInsurance":
+      return {
+        step: 3,
+        question: "How do you want to input your insurance info?",
+        notification: false,
+        input: null,
+        btn1: {
+          small: false,
+          text: "Scan",
+          image: camera,
+          imageOptions: { imageLeft: true },
+        },
+        btn2: {
+          small: false,
+          text: "Input Manually",
+          image: "",
+          action: {
+            dispatch: null,
+            nextPage: "New Insurance Form",
+          },
+        },
+      };
+    case "complete":
+      return {
+        step: 3,
+        question: "Yay you're done!",
+        complete: true,
+        btn1: {
+          small: false,
+          text: "Scan",
+          image: camera,
+          imageOptions: { imageLeft: true },
+        },
+        // potentially make into previous tiny button?
+        btn2: null,
       };
     default:
       throw new Error();
