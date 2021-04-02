@@ -8,6 +8,7 @@ const initialState = {
   step: 1,
   question: "Do you have your vehicle's registration card?",
   notification: false,
+  input: null,
   btn1: {
     small: true,
     text: "Yes",
@@ -35,6 +36,7 @@ function newVehicleReducer(state, action) {
         step: 1,
         question: "How do you want to input your registration info?",
         notification: true,
+        input: null,
         btn1: {
           small: false,
           text: "Scan",
@@ -56,11 +58,33 @@ function newVehicleReducer(state, action) {
         step: 2,
         question: "Do you want to add a nickname for your vehicle?",
         notification: false,
+        input: "Vehicle Nickname",
         btn1: {
           small: false,
           text: "Add",
           image: null,
           imageOptions: null,
+          action: { dispatch: "addInsurance", nextPage: null },
+        },
+        btn2: {
+          small: false,
+          text: "Skip",
+          image: null,
+          action: "",
+        },
+      };
+    case "addInsurance":
+      return {
+        step: 3,
+        question: "Do you want to add your vehicle's insurance info now?",
+        notification: false,
+        input: null,
+        btn1: {
+          small: false,
+          text: "Add Now",
+          image: null,
+          imageOptions: null,
+          action: { dispatch: "takeInsurance", nextPage: null },
         },
         btn2: {
           small: false,
