@@ -8,19 +8,17 @@ const initialState = {
   step: 1,
   question: "Do you have your vehicle's registration card?",
   notification: true,
-  input: null,
   btn1: {
     small: true,
     text: "Yes",
-    image: null,
-    imageOptions: null,
-    action: { dispatch: "notify", nextPage: null },
+    action: { dispatch: "notify" },
   },
   btn2: {
     small: true,
     text: "No",
-    image: null,
-    imageOptions: null,
+    action: {
+      dispatch: "noRegistration",
+    },
   },
 };
 
@@ -129,8 +127,28 @@ function newVehicleReducer(state, action) {
             nextPage: "Home",
           },
         },
-        // potentially make into previous tiny button?
-        btn2: null,
+        footerBtn: null,
+      };
+    case "noRegistration":
+      return {
+        step: 1,
+        question:
+          "No problem! All we need is your Vehicle Identification Number (VIN) and License Plate Number",
+        btn1: {
+          large: true,
+          text: "How do I find my VIN?",
+          action: {
+            dispatch: "",
+          },
+        },
+        btn2: {
+          large: true,
+          text: "I'm ready to input my VIN.",
+          action: {
+            dispatch: "",
+          },
+        },
+        footerBtn: null,
       };
     default:
       throw new Error();

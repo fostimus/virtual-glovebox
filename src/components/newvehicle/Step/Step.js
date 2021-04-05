@@ -35,7 +35,7 @@ function Action({ curState }) {
     }, 2000);
   }
 
-  const w = "w-72";
+  const w = "w-80";
 
   return (
     <AppView style={tailwind("flex items-center justify-around h-1/2 flex-auto mt-10")}>
@@ -53,6 +53,8 @@ function Action({ curState }) {
           <AppView>
             <AppButton
               small={state.btn1.small}
+              large={state.btn1.large}
+              bold={state.btn1.bold}
               text={state.btn1.text}
               action={() => {
                 if (state.btn1.action.dispatch) {
@@ -73,6 +75,8 @@ function Action({ curState }) {
             {state.btn2 && (
               <AppButton
                 small={state.btn2.small}
+                large={state.btn2.large}
+                bold={state.btn2.bold}
                 text={state.btn2.text}
                 image={state.btn2.image}
                 action={() => {
@@ -87,6 +91,7 @@ function Action({ curState }) {
                 imageOptions={state.btn2.imageOptions}
               />
             )}
+            {state.footerBtn && <></>}
           </AppView>
         </>
       )}
