@@ -3,7 +3,7 @@ import CircleSteps from "circlesteps";
 import { AppView, AppText, AppTitle } from "base";
 import { AppButton, FooterButton } from "base/buttons";
 import { TextInput } from "react-native";
-import Notification from "../Notification";
+import Notification from "./Notification";
 import tailwind from "tailwind";
 import { store } from "screens/newvehicle/store";
 import { useNavigation } from "@react-navigation/native";

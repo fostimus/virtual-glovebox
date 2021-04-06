@@ -11,6 +11,7 @@ import {
   NewVehicleFormScreen,
   NewInsuranceFormScreen,
   NewVehicleStateProvider,
+  NewVinFormScreen,
 } from "screens/newvehicle";
 import tailwind from "tailwind";
 
@@ -44,6 +45,7 @@ function NewVehicleFlow() {
         <NewVehicle.Screen name="Add New Vehicle" component={NewVehicleScreen} />
         <NewVehicle.Screen name="New Vehicle Form" component={NewVehicleFormScreen} />
         <NewVehicle.Screen name="New Insurance Form" component={NewInsuranceFormScreen} />
+        <NewVehicle.Screen name="New VIN Form" component={NewVinFormScreen} />
       </NewVehicle.Navigator>
     </NewVehicleStateProvider>
   );
