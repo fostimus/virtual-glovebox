@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import CircleSteps from "circlesteps";
 import { AppView, AppText, AppTitle } from "base";
-import { AppButton } from "base/buttons";
+import { AppButton, FooterButton } from "base/buttons";
 import { TextInput } from "react-native";
 import Notification from "../Notification";
 import tailwind from "tailwind";
@@ -43,14 +43,19 @@ function Action({ curState }) {
         <Notification />
       ) : (
         <>
+          {state.tagline && (
+            <AppText style={tailwind("text-xl")} bold>
+              {state.tagline}
+            </AppText>
+          )}
           <AppText style={tailwind(`text-xl text-center ${w}`)}>{state.question}</AppText>
           {state?.input && (
             <AppView style={tailwind(`${w}`)}>
               <AppText bold>{state?.input}</AppText>
-              <TextInput style={tailwind("bg-white h-8 border border-gray-400 rounded-md mt-1")}></TextInput>
+              <TextInput style={tailwind("bg-white h-8 border border-gray-400 rounded-md mt-1")} />
             </AppView>
           )}
-          <AppView>
+          <AppView style={tailwind("flex items-center")}>
             <AppButton
               small={state.btn1.small}
               large={state.btn1.large}
@@ -91,7 +96,23 @@ function Action({ curState }) {
                 imageOptions={state.btn2.imageOptions}
               />
             )}
-            {state.footerBtn && <></>}
+            {state.footerBtn && (
+              <FooterButton
+                text={state.footerBtn.text}
+                action={() => {
+                  if (state.footerBtn.action.dispatch) {
+                    dispatch({ type: state.footerBtn.action.dispatch });
+                  }
+                  if (state.footerBtn.action.nextPage) {
+                    if (state.footerBtn.action.nextPage === "back") {
+                      navigation.goBack();
+                    } else {
+                      navigation.navigate(state.btn2.action.nextPage);
+                    }
+                  }
+                }}
+              />
+            )}
           </AppView>
         </>
       )}

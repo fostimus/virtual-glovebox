@@ -26,8 +26,6 @@ const store = createContext(initialState);
 const { Provider } = store;
 
 function newVehicleReducer(state, action) {
-  console.log(action);
-
   switch (action.type) {
     case "notify":
       return {
@@ -46,7 +44,6 @@ function newVehicleReducer(state, action) {
           text: "Input Manually",
           image: "",
           action: {
-            dispatch: null,
             nextPage: "New Vehicle Form",
           },
         },
@@ -76,19 +73,23 @@ function newVehicleReducer(state, action) {
         step: 3,
         question: "Do you want to add your vehicle's insurance info now?",
         notification: false,
-        input: null,
+        tagline: "Almost done!",
         btn1: {
           small: false,
           text: "Add Now",
           image: null,
-          imageOptions: null,
           action: { dispatch: "takeInsurance", nextPage: null },
         },
         btn2: {
           small: false,
           text: "Skip",
-          image: null,
           action: "",
+        },
+        footerBtn: {
+          text: "← previous",
+          action: {
+            dispatch: action.type,
+          },
         },
       };
     case "takeInsurance":
@@ -136,6 +137,7 @@ function newVehicleReducer(state, action) {
           "No problem! All we need is your Vehicle Identification Number (VIN) and License Plate Number",
         btn1: {
           large: true,
+          bold: true,
           text: "How do I find my VIN?",
           action: {
             dispatch: "",
@@ -143,21 +145,33 @@ function newVehicleReducer(state, action) {
         },
         btn2: {
           large: true,
+          bold: true,
           text: "I'm ready to input my VIN.",
           action: {
             dispatch: "",
           },
         },
-        footerBtn: null,
+        footerBtn: {
+          text: "Skip this step for now",
+          action: {
+            dispatch: "addInsurance",
+          },
+        },
       };
     default:
       throw new Error();
   }
 }
 
+function initializeState(state = initialState) {
+  return state;
+}
+
 const NewVehicleStateProvider = ({ children }) => {
   const memoizedReducer = useCallback(newVehicleReducer, []);
-  const [state, dispatch] = useReducer(memoizedReducer, initialState);
+  const [state, dispatch] = useReducer(memoizedReducer, initialState, initializeState);
+
+  console.log(state);
 
   const value = useMemo(
     () => ({
