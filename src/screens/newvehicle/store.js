@@ -175,10 +175,22 @@ function newVehicleReducer(state, action) {
             nextPage: "New VIN Form",
           },
         },
-        footerBtn: {
-          text: "Skip this step for now",
+      };
+    case "enterLicensePlate":
+      return {
+        step: 1,
+        question: "How do you want to input your license plate info?",
+        btn1: {
+          bold: true,
+          text: "Scan",
+          image: camera,
+          imageOptions: { imageLeft: true },
+        },
+        btn2: {
+          bold: true,
+          text: "Input Manually",
           action: {
-            dispatch: "addInsurance",
+            nextPage: "New License Plate Form",
           },
         },
       };

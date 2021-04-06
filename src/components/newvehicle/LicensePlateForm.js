@@ -3,16 +3,16 @@ import AppForm from "base/forms";
 import { store } from "screens/newvehicle/store";
 import { useNavigation } from "@react-navigation/native";
 
-export default function VinForm({ setModal }) {
-  const [vin, setVin] = useState("");
+export default function LicensePlateForm({ setModal }) {
+  const [licensePlate, setLicensePlate] = useState("");
 
   const formRows = [];
 
   const firstRow = [
     {
-      name: "Vehicle Identification Number (VIN)",
+      name: "License Plate Number",
       type: "input",
-      setValue: setVin,
+      setValue: setLicensePlate,
     },
   ];
 
@@ -28,7 +28,7 @@ export default function VinForm({ setModal }) {
       rows={formRows}
       cancelAction={() => setModal(true)}
       acceptAction={() => {
-        dispatch({ type: "enterLicensePlate" });
+        dispatch({ type: "complete" });
         navigation.push("Add New Vehicle");
       }}
     />
