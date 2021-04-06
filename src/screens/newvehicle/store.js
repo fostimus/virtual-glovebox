@@ -148,7 +148,31 @@ function newVehicleReducer(state, action) {
           bold: true,
           text: "I'm ready to input my VIN.",
           action: {
-            dispatch: "",
+            dispatch: "enterVin",
+          },
+        },
+        footerBtn: {
+          text: "Skip this step for now",
+          action: {
+            dispatch: "addInsurance",
+          },
+        },
+      };
+    case "enterVin":
+      return {
+        step: 1,
+        question: "How do you want to input your Vehicle Identification Number (VIN)?",
+        btn1: {
+          bold: true,
+          text: "Scan",
+          image: camera,
+          imageOptions: { imageLeft: true },
+        },
+        btn2: {
+          bold: true,
+          text: "Input Manually",
+          action: {
+            nextPage: "New VIN Form",
           },
         },
         footerBtn: {
