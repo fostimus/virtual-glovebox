@@ -1,7 +1,9 @@
 // store.js
 import React, { createContext, useReducer } from "react";
 import camera from "./camera.png";
+import { useNavigation } from "@react-navigation/native";
 
+//TODO: split this up into separate stores/initial states, instead of one giant global state
 const initialState = {
   newVehicle: {
     step: 1,
@@ -12,7 +14,7 @@ const initialState = {
       text: "Yes",
       image: null,
       imageOptions: null,
-      action: "newVehicle notify",
+      action: { dispatch: true, next: "newVehicle notify" },
     },
     btn2: {
       small: true,
@@ -26,10 +28,12 @@ const store = createContext(initialState);
 const { Provider } = store;
 
 const StateProvider = ({ children }) => {
+  const navigation = useNavigation();
+
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case "newVehicle notify":
-        const newState = {
+        return {
           newVehicle: {
             step: 1,
             question: "How do you want to input your registration info?",
@@ -44,10 +48,30 @@ const StateProvider = ({ children }) => {
               small: false,
               text: "Input Manually",
               image: "",
+              action: { dispatch: false, next: () => navigation.navigate("New Vehicle Form") },
             },
           },
         };
-        return newState;
+      case "newVehicle notify":
+        return {
+          newVehicle: {
+            step: 1,
+            question: "How do you want to input your registration info?",
+            notification: true,
+            btn1: {
+              small: false,
+              text: "Scan",
+              image: camera,
+              imageOptions: { imageLeft: true },
+            },
+            btn2: {
+              small: false,
+              text: "Input Manually",
+              image: "",
+              action: "newVehicle manual",
+            },
+          },
+        };
       default:
         throw new Error();
     }

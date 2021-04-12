@@ -13,10 +13,11 @@ export default function AppForm({ title, rows, cancelAction, acceptAction }) {
 
   return (
     <AppCard title={title}>
-      {rows.map(row => (
-        <FormRow>
-          {row.map(item => (
+      {rows.map((row, i) => (
+        <FormRow key={i}>
+          {row.map((item, i) => (
             <FormItem
+              key={i}
               name={item.name}
               small={item.small}
               large={item.large}

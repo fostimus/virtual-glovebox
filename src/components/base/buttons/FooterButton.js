@@ -3,21 +3,11 @@ import tailwind from "tailwind";
 
 import React from "react";
 
-export default function CancelButton({
-  text,
-  imageOptions,
-  image,
-  style,
-  action,
-  small,
-  large,
-  bold,
-  disabled,
-}) {
+export default function FooterButton({ text, imageOptions, image, action, small, large, bold }) {
   return (
     <AppButton
-      style={tailwind("border-2 border-solid bg-transparent border-vgb-primary")}
-      textStyles={tailwind("text-vgb-primary")}
+      style={tailwind("bg-transparent")}
+      textStyles={tailwind("text-gray-700 underline text-sm text-center")}
       text={text}
       imageOptions={imageOptions}
       image={image}

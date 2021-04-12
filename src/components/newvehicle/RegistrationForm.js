@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import Screen from "../Screen";
-import { AppTitle, Modal } from "base";
+import React, { useState, useContext } from "react";
 import AppForm from "base/forms";
-import tailwind from "tailwind";
+import { store } from "screens/newvehicle/store";
+import { useNavigation } from "@react-navigation/native";
 
-export default function NewVehicleFormScreen({ route }) {
+export default function RegistrationForm({ setModal }) {
   const [make, setMake] = useState("");
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
@@ -13,7 +12,6 @@ export default function NewVehicleFormScreen({ route }) {
   const [registeredOwner, setRegisteredOwner] = useState("");
   const [regFromDate, setRegFromDate] = useState("");
   const [regToDate, setRegToDate] = useState("");
-  const [modal, setModal] = useState(false);
 
   const formRows = [];
 
@@ -24,19 +22,19 @@ export default function NewVehicleFormScreen({ route }) {
       options: [
         { label: "Honda", value: "Honda" },
         { label: "Toyota", value: "Toyota" },
-        { label: "Tesla", value: "Tesla" }
+        { label: "Tesla", value: "Tesla" },
       ],
-      setValue: setMake
+      setValue: setMake,
     },
     {
       name: "Model",
       type: "dropdown",
       options: [
         { label: "Civic", value: "Civic" },
-        { label: "Accord", value: "Accord" }
+        { label: "Accord", value: "Accord" },
       ],
-      setValue: setModel
-    }
+      setValue: setModel,
+    },
   ];
 
   const secondRow = [
@@ -47,37 +45,37 @@ export default function NewVehicleFormScreen({ route }) {
       options: [
         { label: "2010", value: "2010" },
         { label: "2011", value: "2011" },
-        { label: "2012", value: "2012" }
+        { label: "2012", value: "2012" },
       ],
-      setValue: setYear
+      setValue: setYear,
     },
     {
       name: "License Plate",
       type: "input",
       large: true,
-      setValue: setLicensePlate
-    }
+      setValue: setLicensePlate,
+    },
   ];
 
   const thirdRow = [
     {
       name: "Vehicle Identification Number (VIN)",
       type: "input",
-      setValue: setVin
-    }
+      setValue: setVin,
+    },
   ];
 
   const fourthRow = [
     {
       name: "Registered Owner",
       type: "input",
-      setValue: setRegisteredOwner
-    }
+      setValue: setRegisteredOwner,
+    },
   ];
 
   const fifthRow = [
     { name: "Reg. Valid From", type: "date", setValue: setRegFromDate },
-    { name: "Reg. Valid To", type: "date", setValue: setRegToDate }
+    { name: "Reg. Valid To", type: "date", setValue: setRegToDate },
   ];
 
   formRows.push(firstRow);
@@ -86,15 +84,21 @@ export default function NewVehicleFormScreen({ route }) {
   formRows.push(fourthRow);
   formRows.push(fifthRow);
 
+  const { state, dispatch } = useContext(store);
+
+  const navigation = useNavigation();
+
+  // console.log(state);
+
   return (
-    <Screen loggedIn>
-      {modal ? <Modal pageTitle="Registration" setModal={setModal} /> : <></>}
-      <AppTitle>{route.params.title}</AppTitle>
-      <AppForm
-        title="Registration Info"
-        rows={formRows}
-        cancelAction={() => setModal(true)}
-      />
-    </Screen>
+    <AppForm
+      title="Registration Info"
+      rows={formRows}
+      cancelAction={() => setModal(true)}
+      acceptAction={() => {
+        dispatch({ type: "formAccept" });
+        navigation.push("Add New Vehicle");
+      }}
+    />
   );
 }
