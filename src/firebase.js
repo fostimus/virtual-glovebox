@@ -3,15 +3,12 @@ import { API_KEY } from "react-native-dotenv";
 require("firebase/auth");
 // Required for side-effects
 require("firebase/firestore");
-const functions = require("firebase-functions");
-
-functions.logger.log("Firebase log help a brotha out:", API_KEY);
 
 const firebase = require("firebase");
 firebase.initializeApp({
   apiKey: API_KEY,
   authDomain: process.env["authDomain"],
-  projectId: "virtual-glovebox",
+  projectId: "virtual-glovebox"
 });
 const db = firebase.firestore();
 // creates a document with key:values
@@ -23,8 +20,8 @@ db.collection("registration info")
       LP: "4321",
       Insurance: 123456789,
       address: "mixed",
-      maintenance: [{ mechanic: "details" }, { parts: "namesOfParts" }, {}],
-    },
+      maintenance: [{ mechanic: "details" }, { parts: "namesOfParts" }, {}]
+    }
   })
   .then(() => {
     console.log("**Firebase document successfully written!");
