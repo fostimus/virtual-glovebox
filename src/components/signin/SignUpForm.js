@@ -8,6 +8,7 @@ import { signUp } from "./authenticate";
 import validate from "./validation";
 import tailwind from "tailwind";
 import { useNavigation } from "@react-navigation/native";
+import PropTypes from "prop-types";
 
 export default function SignUpForm({ inputEmail }) {
   const navigation = useNavigation();
@@ -49,7 +50,7 @@ export default function SignUpForm({ inputEmail }) {
       <AppText bold style={tailwind("ml-4 text-gray-500")}>
         I agree to{" "}
         <AppText bold style={highlightedStyles}>
-          Virtual Glovebox's Privacy Policy
+          Virtual Glovebox&#39;s Privacy Policy
         </AppText>{" "}
         and{" "}
         <AppText bold style={highlightedStyles}>
@@ -117,3 +118,7 @@ export default function SignUpForm({ inputEmail }) {
     </AppView>
   );
 }
+
+SignUpForm.propTypes = {
+  inputEmail: PropTypes.string,
+};

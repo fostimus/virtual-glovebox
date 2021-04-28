@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const App = ({ Component, pageProps }) => {
-    return (
-        <>
-            <div>test</div>
-            <Component {...pageProps} />
-        </>
-    )
-}
+  return (
+    <>
+      <div>test</div>
+      <Component {...pageProps} />
+    </>
+  );
+};
 
-export { App as default }
+export { App as default };
