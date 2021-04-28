@@ -18,7 +18,7 @@
     "@tailwindcss/postcss7-compat": "^2.0.3",
     "autoprefixer": "^9.8.6",
     "eas-cli": "^0.4.2",
-    "eslint": "^7.24.0",
+    "eslint": "^7.25.0",
     "expo": "~40.0.0",
     "expo-app-loading": "^1.0.1",
     "expo-facebook": "~9.1.0",
@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "eslint-plugin-react": "^7.23.2",
     "react-native-dotenv": "^2.5.3"
   },
   "private": true,

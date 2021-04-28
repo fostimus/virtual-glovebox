@@ -1,17 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { AppView, AppText } from "base";
-import { Stylesheet } from "react-native";
-import AppCard from "../AppCard";
 import ExpandableCardItem from "./ExpandableCardItem";
 import tailwind from "tailwind";
+import PropTypes from "prop-types";
 
 export default function ExpandableCard({ title, items }) {
   return (
-    <AppView
-      style={tailwind(
-        "flex items-center justify-center w-11/12 rounded-md my-2"
-      )}
-    >
+    <AppView style={tailwind("flex items-center justify-center w-11/12 rounded-md my-2")}>
       <AppView style={tailwind("w-full bg-vgb-white rounded-xl p-2")}>
         <AppText bold style={tailwind("w-full text-xl ml-4 underline")}>
           {title}
@@ -24,6 +19,7 @@ export default function ExpandableCard({ title, items }) {
       >
         {items.map((item, index) => (
           <ExpandableCardItem
+            key={index}
             title={item}
             topBorder={index === 0}
             borderBottom={index === items.length - 1}
@@ -33,6 +29,11 @@ export default function ExpandableCard({ title, items }) {
     </AppView>
   );
 }
+
+ExpandableCard.propTypes = {
+  title: PropTypes.string,
+  items: PropTypes.array,
+};
 
 // note: box shadow is unsupported by tailwind-rn library. need to add in those styles manually
 /*
