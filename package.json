@@ -27,7 +27,7 @@
     "firebase": "7.9.0",
     "global": "^4.4.0",
     "metro-react-native-babel-preset": "^0.65.2",
-    "next": "^9",
+    "next": "^11",
     "postcss": "^7.0.35",
     "prop-types": "^15.7.2",
     "react": "16.13.1",
